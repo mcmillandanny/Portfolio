@@ -4,7 +4,9 @@
   "description": "A good starting point for new Circus students",
   "main": "gulpfile.js",
   "dependencies": {
-    "npm": "^6.4.0"
+    "@pixi/filter-godray": "^2.7.0",
+    "npm": "^6.4.0",
+    "pixi.js": "^5.0.0-rc.2"
   },
   "devDependencies": {
     "axios": "^0.18.0",

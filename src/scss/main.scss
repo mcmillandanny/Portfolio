@@ -15,7 +15,19 @@ TABLE OF CONTENTS:
 
 /* 0. Reset ================================= */
 @import 'reset';
+$accnent-color: #eadbb0;
+$orange: #e16d3b;
+$lightblue: #4f6d7a;
+$roboto-font: 'Roboto', sans-serif;
 
+$tablet-bp: 768px;
+$desktop-bp: 960px; 
+
+@mixin tablet  {
+	@media (min-width: $tablet-bp) {
+		@content;
+	}
+}
 
 /* 1. Main Layout ================================= */
 
@@ -29,7 +41,7 @@ html, body {
 }
 
 body {
-	font-family: sans-serif;
+	font-family: $roboto-font;
 	background: #444;
 }
 
@@ -43,19 +55,82 @@ h1 {
 
 .content {
 	position: relative;
-	padding: 200px 20px;
-	margin-left: 100px;
-	color: white;
 	z-index: 12;
 	pointer-events: none;
 	top: 100%;
+	width: 100%;
+	padding: 10px;
+
+
+	#hamburger {
+		z-index: 20;
+		display: inline-block;
+		padding: 10px 10px 0px 10px;
+		cursor: pointer;
+		pointer-events: none;
+
+
+		.line-1 {
+			width: 25px;
+			height: 3px;
+			border-radius: 10px;
+			background-color: white;
+			margin: 6px 0;
+			transition: 0.4s; 
+		}
+
+		.line-2 {
+			width: 35px;
+			height: 3px;
+			border-radius: 10px;
+			background-color: white;
+			margin: 6px 0;
+			transition: 0.4s;
+		}
+		
+		.line-3 {
+			width: 45px;
+			height: 3px;
+			border-radius: 10px;
+			background-color: white;
+			margin: 6px 0;
+			transition: 0.4s ease-in-out;
+		}
+
+		.change.line-1 {
+			transform: rotate(-45deg) translate(-5px, 3px);
+			width: 45px;
+		}
+
+		.change.line-2 {
+			opacity: 0;
+		}
+
+		.change.line-3 {
+			transform: rotate(45deg) translate(-8px, -8px) ;
+		}
+
+		#hamburger.menu-ani {
+			transition: .7;
+		}
+	}
+	
+
+	h1 {
+		color: $orange;
+		text-align: center;
+	}
 
 	p {
-		width: 80%;
-		max-width: 300px;
-		font-size: 1.2rem;
-		line-height: 2rem;
+		font-size: 20px;
 		margin-bottom: 20px;
+		color: $accnent-color;
+		text-align: center;
+		word-wrap: break-word;
+		width: 300px;
+		margin: auto;
+		padding: 10px;
+		
 	}
 }
 
@@ -66,22 +141,22 @@ h1 {
 	width: 100%;
 	height: 100%;
 	overflow: hidden;
-	background: black;
+	background: $lightblue;
 	z-index: 10;
 }
 
 #backgroundCanvas {
 	width: 100%;
-	height: 100%;
 }
 
-.p1 img {
+.porfolio-wrapper img {
 	pointer-events: auto;
-
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 50%;
+	text-align: center;
 }
 
-.p1 img:hover {
-	transform: scale(.5);
 
 
-}
