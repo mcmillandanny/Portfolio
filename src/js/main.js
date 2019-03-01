@@ -137,9 +137,8 @@ function setupTextDecompose() {
 		letter.interactive = true;
 		letter.tweening = true;
 
-		letter.textAnimateIn = true;
 
-		if (letter.textAnimateIn === true) {
+		if (letter.tweening === true) {
 
 			TweenMax.fromTo(letter, .5, 
 			{
@@ -149,7 +148,7 @@ function setupTextDecompose() {
 			{
 				y: letter.intiPos.y,
 				onComplete: ()=> {
-					letter.textAnimateIn = false;
+					letter.tweening= false;
 				}
 			}); 
 		}
