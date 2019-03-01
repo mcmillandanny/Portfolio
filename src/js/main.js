@@ -7,7 +7,6 @@ let app = new PIXI.Application({
 	transparent: true
 });
 
-let rgb = new PIXI.filters.RGBSplitFilter({x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0});
 
 let manifest = [
 	{"key" : "displace", "url" : "dist/img/stars.jpg"}
@@ -62,108 +61,27 @@ function setupScrollProgress() {
 	app.stage.addChild(app.scrollProgress);
 }
 
+let godRay = new PIXI.filters.GodrayFilter()
+let bgImage = new PIXI.Graphics();
+var renderer = new PIXI.autoDetectRenderer();
 
-
-
-  
+godRay.lacunarity = 5;
 
 function godRayFilter() {
 
+	bgImage.beginFill(0X4f6d7a);
+	bgImage.drawRect(0, 0, 3000, 3000);
+	bgImage.endFill();	
+	app.stage.addChild(bgImage)
 
-	// let displace = new PIXI.Sprite(app.loader.resources.displace.texture, 2048, 2560)
-	// app.stage.addChild(displace);
-	// app.loader.resources.displace.texture.baseTexture.wrapMode = PIXI.WRAP_MODES.REPEAT;
-
-	// let godRay = new PIXI.filters.GodrayFilter()
+	bgImage.filters = [godRay];
 	
-
-	let godRay = new PIXI.filters.GodrayFilter()
-
-	// displace.filters = [godRay];
-	app.stage.filters = [godRay];
-
-	// TweenMax.from(godRay, 10,
-	// 	{
-	// 		angle: 20,
-	// 		gain: 0.1,
-	// 		lacunarity: 5, 
-	// 		x: 100,
-	// 		y: 100, 
-	// 		repeat: -1 
-			
-	// 	});
-
-		TweenMax.fromTo(godRay, 10,
-			{
-				time: .4,
-				angle: 0,
-				gain: 0.5,
-				lacunarity: 4, 
-				x: 100,
-				y: 100, 
-			},
-			{
-				time: .4,
-				angle: 0,
-				gain: 0.,
-				lacunarity: 5, 
-				x: 100,
-				y: 100, 
-				repeat: -1
-				
-			});
 	
+	window.addEventListener("mousemove", (e) => {
 
-	
-	// window.addEventListener("mousemove", (e) => {
-
-	// 	let mouseXcord = e.x - 400;
-	// 	console.log(e)
-
-	// 	TweenMax.from(godRay, 10,
-	// 		{
-	// 			angle: mouseXcord,
-	// 			gain: 0.6,
-	// 			lacunarity: 5, 
-	// 			x: 100
-				
-	// 		});
-	// })
-
-	// window.addEventListener("mouseleave", (e) => {
-	// 	let mouseXcord = e.x
-	// 	TweenMax.to(godRay, 10,
-	// 		{
-	// 			angle: 30,
-	// 			gain: 0.6,
-	// 			lacunarity: 5, 
-	// 			x: 200
-				
-	// 		});
-	// })
-	
-
-
-
-
-	// let filter = new PIXI.filters.GodrayFilter()
-	// displace.filters = [filter];
-
-	
-
-	// TweenMax.fromTo(displace, 10,
-	// 	{
-	// 		x: 0,
-	// 		y: 0,
-	// 	},
-	// 	{
-	// 		x: -1024,
-	// 		y: -1280,
-	// 		repeat: -1,
-	// 		ease: Linear.easeNone
-	// 	});
-
-
+		let mouseXcord = e.x - 400;
+		godRay.angle = mouseXcord * 0.02;
+	})
 }
 
 function setupTextDecompose() {
@@ -193,7 +111,6 @@ function setupTextDecompose() {
 
 	];
 
-	// app.letters[0].filters = [new PIXI.filters.GodrayFilter()];
 
 	app.letters.forEach(function(letter, i) {
 
@@ -208,28 +125,49 @@ function setupTextDecompose() {
 		}
 
 		letter.endPoint = {
-			x: -1450, 
-			y:	-1200
+			x: 1000, 
+			y: 2000
 		}
 
 		letter.x = letter.intiPos.x;
 		letter.y = letter.intiPos.y;
 
-		
-
 		letter.activatedText = false;
-
 		app.stage.addChild(letter);
-
 		letter.interactive = true;
+		letter.tweening = true;
+
+		letter.textAnimateIn = true;
+
+		if (letter.textAnimateIn === true) {
+
+			TweenMax.fromTo(letter, .5, 
+			{
+				y: Math.random() * window.innerHeight,
+				ease: Power2.easeIn,
+			}, 
+			{
+				y: letter.intiPos.y,
+				onComplete: ()=> {
+					letter.textAnimateIn = false;
+				}
+			}); 
+		}
+		
+		
 		letter.on('mouseover', function(interaction) {
 			
-			letter.x = Math.random() * window.innerWidth;
-			letter.y = Math.random() * window.innerHeight;
+			letter.tweening = true;
 
-			letter.activatedText = true;
-
-
+			TweenMax.to(letter, 1, {
+				x: Math.random() * window.innerWidth,
+				y: Math.random() * window.innerHeight,
+				ease: Power1.easeIn,
+				onComplete: () => {
+					letter.tweening = false;
+					letter.activatedText = true;
+				}
+			});
 		})
 	})
 }
@@ -238,62 +176,56 @@ function setupTextDecompose() {
 
 
 function update(e) {
+
 	let html = document.scrollingElement;
 	let percentScrolled = html.scrollTop / (html.scrollHeight - html.offsetHeight);
 	// console.log(percentScrolled);
 	app.scrollProgress.scale.set(1, percentScrolled);
-
 	app.letters.forEach(function(letter) {
-		if (letter.activatedText === true) {
+		if (letter.tweening === true) {
+			// tween max has control
+		}
+		else if (letter.activatedText === true) {
 			letter.velocity.x += (Math.random() * 2) - 1;
 			letter.velocity.y += (Math.random() * 2) - 1;
 			letter.x += letter.velocity.x;
 			letter.y += letter.velocity.y;
 
-			if (letter.y > 720) {
-				letter.velocity.y *= -0.8;
-				letter.y = letter.intiPos.y;
-				letter.x = letter.intiPos.x;
-				letter.activatedText = false;
+				if (letter.y > 720) {
+					letter.velocity.y *= -0.8;
+					letter.y = letter.intiPos.y;
+					letter.x = letter.intiPos.x;
+					letter.activatedText = false;
+				}
+		
+				if (letter.y < 0) {
+					letter.velocity.y *= -0.8;
+					letter.y = letter.intiPos.y;
+					letter.x = letter.intiPos.x;
+					letter.activatedText = false;
+				}
+		
+				if (letter.x > 1280) {
+					letter.velocity.x *= -0.8;
+					letter.x = letter.intiPos.x;
+					letter.y = letter.intiPos.y;
+					letter.activatedText = false;
+				}
+		
+				if (letter.x < 0) {
+					letter.velocity.x *= -0.8;
+					letter.x = letter.intiPos.x;
+					letter.y = letter.intiPos.y;
+					letter.activatedText = false;
+				} 
+			}	
+			else {
+				letter.x = lerp(letter.intiPos.x, letter.endPoint.x, percentScrolled);
+				letter.y = lerp(letter.intiPos.y, letter.endPoint.y, percentScrolled);
 			}
-	
-			if (letter.y < 0) {
-				letter.velocity.y *= -0.8;
-				letter.y = letter.intiPos.y;
-				letter.x = letter.intiPos.x;
-				letter.activatedText = false;
-			}
-	
-			if (letter.x > 1280) {
-				letter.velocity.x *= -0.8;
-				letter.x = letter.intiPos.x;
-				letter.y = letter.intiPos.y;
-				letter.activatedText = false;
-			}
-	
-			if (letter.x < 0) {
-				letter.velocity.x *= -0.8;
-				letter.x = letter.intiPos.x;
-				letter.y = letter.intiPos.y;
-				letter.activatedText = false;
-			}
-		}	
-
 	})
 
-
-	// change filter amt based on scroll
-	// rgb.red = {x: 20 * percentScrolled, y: 10 * percentScrolled};
-
-	// lerp position
-
-	// for (let i = 0; i < app.letters.length; i++) {
-	// 	let letter = app.letters[i];
-
-	// 	letter.x = lerp(letter.intiPos.x, letter.endPoint.x, percentScrolled);
-	// 	letter.y = lerp(letter.intiPos.y, letter.endPoint.y, percentScrolled);
-	// }
-
+	godRay.time += .01;
 	
 }
 
@@ -312,12 +244,12 @@ const hamburger = document.getElementById('hamburger');
 const lines = document.querySelectorAll('.lines');
 
 
+
 function hamburgerToggle() {
     lines.forEach(function(line) {
 		line.classList.toggle("change"); 
-		console.log("clicked")      
+		
     });
 };
 hamburger.addEventListener("click", hamburgerToggle);
-//materialize text in/ pull content in on load possabilitys for portfolio site
-//use mousedown, touchstart for mobile
+

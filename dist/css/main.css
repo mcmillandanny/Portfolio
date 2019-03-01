@@ -102,7 +102,7 @@ h1 {
 	display: inline-block;
 	padding: 10px 10px 0px 10px;
 	cursor: pointer;
-	pointer-events: none;
+	pointer-events: auto;
 }
 
 .content #hamburger .line-1 {
@@ -178,6 +178,7 @@ h1 {
 
 #backgroundCanvas {
 	width: 100%;
+	height: 95%;
 }
 
 .porfolio-wrapper img {
