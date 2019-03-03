@@ -39,23 +39,23 @@ function setupScrollProgress() {
 	let start = new PIXI.Graphics();
 	start.beginFill(0xffffff);
 	start.drawCircle(0, 0, 4);
-	start.x = 50;
+	start.x = 1250;
 	start.y = 100;
 	app.stage.addChild(start);
 
 	let end = new PIXI.Graphics();
 	end.beginFill(0xffffff);
 	end.drawCircle(0, 0, 4);
-	end.x = 50;
+	end.x = 1250;
 	end.y = 500;
 	app.stage.addChild(end);
 
 	// draw progress bar
 	app.scrollProgress = new PIXI.Graphics();
-	app.scrollProgress.beginFill(0xffffff);
+	app.scrollProgress.beginFill(0xe16d3b);
 	app.scrollProgress.drawRect(-2, 0, 4, 400);
 
-	app.scrollProgress.x = 50;
+	app.scrollProgress.x = 1250;
 	app.scrollProgress.y = 100;
 
 	app.stage.addChild(app.scrollProgress);
@@ -65,7 +65,7 @@ let godRay = new PIXI.filters.GodrayFilter()
 let bgImage = new PIXI.Graphics();
 var renderer = new PIXI.autoDetectRenderer();
 
-godRay.lacunarity = 5;
+godRay.lacunarity = 4;
 
 function godRayFilter() {
 
@@ -125,8 +125,8 @@ function setupTextDecompose() {
 		}
 
 		letter.endPoint = {
-			x: 1000, 
-			y: 2000
+			x: 500, 
+			y: -1000
 		}
 
 		letter.x = letter.intiPos.x;
@@ -224,7 +224,7 @@ function update(e) {
 			}
 	})
 
-	godRay.time += .01;
+	godRay.time += .001;
 	
 }
 
@@ -241,14 +241,54 @@ window.onload = function() {
 
 const hamburger = document.getElementById('hamburger');
 const lines = document.querySelectorAll('.lines');
+let shaderBlock1 = document.querySelector(".shader-block1");
+let shaderBlock2 = document.querySelector(".shader-block2");
 
+let width = Math.random(2) * 2000;
+let height = Math.random(2) * 2000;
+console.log(width)
 
 
 function hamburgerToggle() {
     lines.forEach(function(line) {
 		line.classList.toggle("change"); 
+		console.log('clicked')
 		
-    });
+	});
+	TweenMax.fromTo(shaderBlock1, .3, {
+		width: 0,
+		height: 0,
+		x:0,
+		y: 0,
+
+	},
+	{
+		width: width,
+		height: height,
+		x:0,
+		y: 0,
+	}
+	)
+	TweenMax.fromTo(shaderBlock2, .3, {
+		width: 0,
+		height: 0,
+		x:0,
+		y: 0,
+
+	},
+	{
+		width: width,
+		height: height,
+		x:0,
+		y: 0,
+	}
+	)
 };
 hamburger.addEventListener("click", hamburgerToggle);
+
+
+
+// shader blocks exp 
+
+
 

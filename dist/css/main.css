@@ -90,78 +90,22 @@ h1 {
 /* 2. Content ================================= */
 .content {
 	position: relative;
-	z-index: 12;
+	z-index: 5;
 	pointer-events: none;
 	top: 100%;
 	width: 100%;
 	padding: 10px;
 }
 
-.content #hamburger {
-	z-index: 20;
-	display: inline-block;
-	padding: 10px 10px 0px 10px;
-	cursor: pointer;
-	pointer-events: auto;
-}
-
-.content #hamburger .line-1 {
-	width: 25px;
-	height: 3px;
-	border-radius: 10px;
-	background-color: white;
-	margin: 6px 0;
-	transition: 0.4s;
-}
-
-.content #hamburger .line-2 {
-	width: 35px;
-	height: 3px;
-	border-radius: 10px;
-	background-color: white;
-	margin: 6px 0;
-	transition: 0.4s;
-}
-
-.content #hamburger .line-3 {
-	width: 45px;
-	height: 3px;
-	border-radius: 10px;
-	background-color: white;
-	margin: 6px 0;
-	transition: 0.4s ease-in-out;
-}
-
-.content #hamburger .change.line-1 {
-	transform: rotate(-45deg) translate(-5px, 3px);
-	width: 45px;
-}
-
-.content #hamburger .change.line-2 {
-	opacity: 0;
-}
-
-.content #hamburger .change.line-3 {
-	transform: rotate(45deg) translate(-8px, -8px);
-}
-
-.content #hamburger #hamburger.menu-ani {
-	transition: .7;
-}
-
 .content h1 {
 	color: #e16d3b;
-	text-align: center;
 }
 
 .content p {
 	font-size: 20px;
 	margin-bottom: 20px;
 	color: #eadbb0;
-	text-align: center;
 	word-wrap: break-word;
-	width: 300px;
-	margin: auto;
 	padding: 10px;
 }
 
@@ -173,7 +117,82 @@ h1 {
 	height: 100%;
 	overflow: hidden;
 	background: #4f6d7a;
+	z-index: 2;
+}
+
+.canvasWrapper .shader-wrapper {
 	z-index: 10;
+	display: inline-block;
+	position: absolute;
+	width: 100%;
+}
+
+.canvasWrapper .shader-wrapper .shader-block1 {
+	position: absolute;
+	top: 0;
+	left: 0;
+	transform: rotate(45deg);
+	background: black;
+}
+
+.canvasWrapper .shader-wrapper .shader-block2 {
+	position: absolute;
+	top: 0%;
+	left: 0%;
+	background: black;
+}
+
+.canvasWrapper #hamburger {
+	z-index: 20;
+	display: inline-block;
+	padding: 10px 10px 0px 10px;
+	cursor: pointer;
+	pointer-events: auto;
+	position: absolute;
+}
+
+.canvasWrapper #hamburger .line-1 {
+	width: 25px;
+	height: 3px;
+	border-radius: 10px;
+	background-color: white;
+	margin: 6px 0;
+	transition: 0.4s;
+}
+
+.canvasWrapper #hamburger .line-2 {
+	width: 35px;
+	height: 3px;
+	border-radius: 10px;
+	background-color: white;
+	margin: 6px 0;
+	transition: 0.4s;
+}
+
+.canvasWrapper #hamburger .line-3 {
+	width: 45px;
+	height: 3px;
+	border-radius: 10px;
+	background-color: white;
+	margin: 6px 0;
+	transition: 0.4s ease-in-out;
+}
+
+.canvasWrapper #hamburger .change.line-1 {
+	transform: rotate(-45deg) translate(-5px, 3px);
+	width: 45px;
+}
+
+.canvasWrapper #hamburger .change.line-2 {
+	opacity: 0;
+}
+
+.canvasWrapper #hamburger .change.line-3 {
+	transform: rotate(45deg) translate(-8px, -8px);
+}
+
+.canvasWrapper #hamburger #hamburger.menu-ani {
+	transition: .7;
 }
 
 #backgroundCanvas {
@@ -181,13 +200,20 @@ h1 {
 	height: 95%;
 }
 
-.porfolio-wrapper img {
+.porfolio-wrapper div {
 	pointer-events: auto;
 	display: block;
-	margin-left: auto;
-	margin-right: auto;
-	width: 50%;
 	text-align: center;
+	width: 50%;
+	margin: 20px;
+}
+
+.porfolio-wrapper div:nth-child(odd) {
+	margin-left: auto;
+}
+
+.porfolio-wrapper div:nth-child(even) {
+	margin-right: auto;
 }
 
 /*# sourceMappingURL=main.css.map */
