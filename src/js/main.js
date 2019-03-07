@@ -9,9 +9,7 @@ let app = new PIXI.Application({
 
 
 let manifest = [
-	{"key" : "displace", "url" : "dist/img/stars.jpg"}
 ];
-
 
 
 
@@ -33,6 +31,7 @@ function onAssetsLoaded(loader, resources) {
 
 	app.ticker.add((e) => update(e));
 }
+
 
 function setupScrollProgress() {
 	// draw range circles
@@ -108,8 +107,11 @@ function setupTextDecompose() {
 		new PIXI.Text('L', style),
 		new PIXI.Text('A', style),
 		new PIXI.Text('N', style),
-
 	];
+
+	let kerning = [
+		0,0,0,0,0,0,0,0,0,-5,-12,-15,-15
+	]
 
 
 	app.letters.forEach(function(letter, i) {
@@ -119,8 +121,8 @@ function setupTextDecompose() {
 			y: (Math.random() * 10) - 5
 		}
 
-		letter.intiPos = {
-			x : 320 + 50 * i,
+		letter.initPos = {
+			x : 330 + 50 * i + kerning[i],
 			y : 120
 		}
 
@@ -129,8 +131,8 @@ function setupTextDecompose() {
 			y: -1000
 		}
 
-		letter.x = letter.intiPos.x;
-		letter.y = letter.intiPos.y;
+		letter.x = letter.initPos.x;
+		letter.y = letter.initPos.y;
 
 		letter.activatedText = false;
 		app.stage.addChild(letter);
@@ -146,7 +148,7 @@ function setupTextDecompose() {
 				ease: Power2.easeIn,
 			}, 
 			{
-				y: letter.intiPos.y,
+				y: letter.initPos.y,
 				onComplete: ()=> {
 					letter.tweening= false;
 				}
@@ -178,7 +180,6 @@ function update(e) {
 
 	let html = document.scrollingElement;
 	let percentScrolled = html.scrollTop / (html.scrollHeight - html.offsetHeight);
-	// console.log(percentScrolled);
 	app.scrollProgress.scale.set(1, percentScrolled);
 	app.letters.forEach(function(letter) {
 		if (letter.tweening === true) {
@@ -192,35 +193,35 @@ function update(e) {
 
 				if (letter.y > 720) {
 					letter.velocity.y *= -0.8;
-					letter.y = letter.intiPos.y;
-					letter.x = letter.intiPos.x;
+					letter.y = letter.initPos.y;
+					letter.x = letter.initPos.x;
 					letter.activatedText = false;
 				}
 		
 				if (letter.y < 0) {
 					letter.velocity.y *= -0.8;
-					letter.y = letter.intiPos.y;
-					letter.x = letter.intiPos.x;
+					letter.y = letter.initPos.y;
+					letter.x = letter.initPos.x;
 					letter.activatedText = false;
 				}
 		
 				if (letter.x > 1280) {
 					letter.velocity.x *= -0.8;
-					letter.x = letter.intiPos.x;
-					letter.y = letter.intiPos.y;
+					letter.x = letter.initPos.x;
+					letter.y = letter.initPos.y;
 					letter.activatedText = false;
 				}
 		
 				if (letter.x < 0) {
 					letter.velocity.x *= -0.8;
-					letter.x = letter.intiPos.x;
-					letter.y = letter.intiPos.y;
+					letter.x = letter.initPos.x;
+					letter.y = letter.initPos.y;
 					letter.activatedText = false;
 				} 
 			}	
 			else {
-				letter.x = lerp(letter.intiPos.x, letter.endPoint.x, percentScrolled);
-				letter.y = lerp(letter.intiPos.y, letter.endPoint.y, percentScrolled);
+				letter.x = lerp(letter.initPos.x, letter.endPoint.x, percentScrolled);
+				letter.y = lerp(letter.initPos.y, letter.endPoint.y, percentScrolled);
 			}
 	})
 
@@ -244,9 +245,14 @@ const lines = document.querySelectorAll('.lines');
 let shaderBlock1 = document.querySelector(".shader-block1");
 let shaderBlock2 = document.querySelector(".shader-block2");
 
-let width = Math.random(2) * 2000;
-let height = Math.random(2) * 2000;
-console.log(width)
+let width = Math.ceil(Math.random() * 1000);
+let height = Math.ceil(Math.random() * 1000);
+
+//make random number between 200-500
+//each div width/height should be different
+//clear the results when hamburger is closed
+
+
 
 
 function hamburgerToggle() {
@@ -286,9 +292,6 @@ function hamburgerToggle() {
 };
 hamburger.addEventListener("click", hamburgerToggle);
 
-
-
-// shader blocks exp 
 
 
 
