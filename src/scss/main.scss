@@ -21,7 +21,7 @@ $lightblue: #4f6d7a;
 $roboto-font: 'Roboto', sans-serif;
 
 $tablet-bp: 768px;
-$desktop-bp: 960px; 
+$desktop-bp: 1280px; 
 
 @mixin tablet  {
 	@media (min-width: $tablet-bp) {
@@ -66,15 +66,6 @@ h1 {
 	h1 {
 		color: $orange;
 
-	}
-
-	p {
-		font-size: 20px;
-		margin-bottom: 20px;
-		color: $accnent-color;
-		word-wrap: break-word;
-		padding: 10px;
-		
 	}
 }
 
@@ -177,6 +168,15 @@ h1 {
 	display: flex;
 	flex-direction: column;
 
+	 p {
+		font-size: 20px;
+		margin-bottom: 20px;
+		color: $accnent-color;
+		word-wrap: break-word;
+		padding: 10px;
+	}
+
+
 	@include tablet() {
 		width: 50%;
 		display: block;
@@ -190,25 +190,11 @@ h1 {
 			margin-right: auto;
 		}	
 	}
-
-	
 }
 
-.porfolio-wrapper {
-
-	.img-shatter {
-		width: 20%;
-		margin: auto;
-	
-		@include tablet() {
-			width: 20%;
-			margin: 0;
-		}
-	}
-}
 
 .porfolio-wrapper  {
-		 img {
+		img {
 		width: 100%;
 		margin: auto;
 	
@@ -217,6 +203,9 @@ h1 {
 			margin: 0;
 		}
 	}
+}
+#project1 {
+	width: 100%;
 }
 
 

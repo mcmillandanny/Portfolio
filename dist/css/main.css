@@ -102,14 +102,6 @@ h1 {
 	color: #f1a91c;
 }
 
-.content p {
-	font-size: 20px;
-	margin-bottom: 20px;
-	color: #eadbb0;
-	word-wrap: break-word;
-	padding: 10px;
-}
-
 .canvasWrapper {
 	position: fixed;
 	top: 0;
@@ -208,6 +200,14 @@ h1 {
 	flex-direction: column;
 }
 
+.porfolio-wrapper div p {
+	font-size: 20px;
+	margin-bottom: 20px;
+	color: #eadbb0;
+	word-wrap: break-word;
+	padding: 10px;
+}
+
 @media (min-width: 768px) {
 	.porfolio-wrapper div {
 		width: 50%;
@@ -222,18 +222,6 @@ h1 {
 	}
 }
 
-.porfolio-wrapper .img-shatter {
-	width: 20%;
-	margin: auto;
-}
-
-@media (min-width: 768px) {
-	.porfolio-wrapper .img-shatter {
-		width: 20%;
-		margin: 0;
-	}
-}
-
 .porfolio-wrapper img {
 	width: 100%;
 	margin: auto;
@@ -244,6 +232,10 @@ h1 {
 		width: 100%;
 		margin: 0;
 	}
+}
+
+#project1 {
+	width: 100%;
 }
 
 /*# sourceMappingURL=main.css.map */

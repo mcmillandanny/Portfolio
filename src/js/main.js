@@ -7,8 +7,16 @@ let app = new PIXI.Application({
 	transparent: true
 });
 
+let imageFilterApp = new PIXI.Application({
+	view: document.getElementById("project1"),
+	width: 1280,
+	height: 720, 
+	transparent: true
+});
 
 let manifest = [
+	{"key" : "hanselProject", "url" : "dist/img/hanselproject.jpg"},
+	{"key" : "displacement", "url" : "dist/img/displacement2.png"},
 ];
 
 
@@ -23,6 +31,8 @@ function onAssetsLoaded(loader, resources) {
 
 	godRayFilter();
 
+	imageFilter();
+
 	setupScrollProgress();
 
 	setupTextDecompose();
@@ -30,6 +40,32 @@ function onAssetsLoaded(loader, resources) {
 
 
 	app.ticker.add((e) => update(e));
+}
+
+
+function imageFilter() {
+	let hanselProjectImg = new PIXI.Sprite(app.loader.resources.hanselProject.texture);
+	imageFilterApp.stage.addChild(hanselProjectImg);
+
+
+	let displace= new PIXI.Sprite(app.loader.resources.displacement.texture);
+	let displaceFilter = new PIXI.filters.DisplacementFilter(displace);
+
+	imageFilterApp.stage.filters = [displaceFilter];
+	displaceFilter.scale.set(0);
+
+	imageFilterApp.view.addEventListener("mouseover", function(){
+		TweenMax.fromTo(displaceFilter.scale, 1, {
+			x: 50, 
+			y: 50
+		}, 
+		{	x: 0, 
+			y: 0, 
+			ease: Elastic.easeOut,
+		});
+
+	});
+
 }
 
 
@@ -83,6 +119,7 @@ function godRayFilter() {
 	})
 }
 
+
 function setupTextDecompose() {
 	const style = new PIXI.TextStyle({
 		fill: "white",
@@ -92,6 +129,17 @@ function setupTextDecompose() {
 		fontWeight: "bold", 
 		fill: "#eadbb0",
 	});
+
+	const styleTagLine = new PIXI.TextStyle({
+		fill: "#c3771c",
+		fontFamily: "\"Lucida Console\", Monaco, monospace",
+		fontSize: 30,
+		fontVariant: "small-caps",
+		fontWeight: "bold"
+	});
+
+	let tagLine = new PIXI.Text("Interactive Developer", styleTagLine);
+	app.stage.addChild(tagLine);
 
 	app.letters = [
 		new PIXI.Text('D', style),
@@ -295,3 +343,9 @@ hamburger.addEventListener("click", hamburgerToggle);
 
 
 
+var waypoint = new Waypoint({
+	element: document.querySelector('.p1'),
+	handler: function() {
+	  alert('Basic waypoint triggered')
+	}
+  })

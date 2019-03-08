@@ -9,7 +9,14 @@ var app = new PIXI.Application({
 	transparent: true
 });
 
-var manifest = [];
+var imageFilterApp = new PIXI.Application({
+	view: document.getElementById("project1"),
+	width: 1280,
+	height: 720,
+	transparent: true
+});
+
+var manifest = [{ "key": "hanselProject", "url": "dist/img/hanselproject.jpg" }, { "key": "displacement", "url": "dist/img/displacement2.png" }];
 
 function loadAssets() {
 	app.loader.add(manifest);
@@ -21,12 +28,35 @@ function onAssetsLoaded(loader, resources) {
 
 	godRayFilter();
 
+	imageFilter();
+
 	setupScrollProgress();
 
 	setupTextDecompose();
 
 	app.ticker.add(function (e) {
 		return update(e);
+	});
+}
+
+function imageFilter() {
+	var hanselProjectImg = new PIXI.Sprite(app.loader.resources.hanselProject.texture);
+	imageFilterApp.stage.addChild(hanselProjectImg);
+
+	var displace = new PIXI.Sprite(app.loader.resources.displacement.texture);
+	var displaceFilter = new PIXI.filters.DisplacementFilter(displace);
+
+	imageFilterApp.stage.filters = [displaceFilter];
+	displaceFilter.scale.set(0);
+
+	imageFilterApp.view.addEventListener("mouseover", function () {
+		TweenMax.fromTo(displaceFilter.scale, 1, {
+			x: 50,
+			y: 50
+		}, { x: 0,
+			y: 0,
+			ease: Elastic.easeOut
+		});
 	});
 }
 
@@ -87,6 +117,17 @@ function setupTextDecompose() {
 		fontVariant: "small-caps",
 		fontWeight: "bold"
 	}, "fill", "#eadbb0"));
+
+	var styleTagLine = new PIXI.TextStyle({
+		fill: "#c3771c",
+		fontFamily: "\"Lucida Console\", Monaco, monospace",
+		fontSize: 30,
+		fontVariant: "small-caps",
+		fontWeight: "bold"
+	});
+
+	var tagLine = new PIXI.Text("Interactive Developer", styleTagLine);
+	app.stage.addChild(tagLine);
 
 	app.letters = [new PIXI.Text('D', style), new PIXI.Text('A', style), new PIXI.Text('N', style), new PIXI.Text('N', style), new PIXI.Text('Y ', style), new PIXI.Text('M', style), new PIXI.Text('C', style), new PIXI.Text('M', style), new PIXI.Text('I', style), new PIXI.Text('L', style), new PIXI.Text('L', style), new PIXI.Text('A', style), new PIXI.Text('N', style)];
 
@@ -250,4 +291,11 @@ function hamburgerToggle() {
 	});
 };
 hamburger.addEventListener("click", hamburgerToggle);
+
+var waypoint = new Waypoint({
+	element: document.querySelector('.p1'),
+	handler: function handler() {
+		alert('Basic waypoint triggered');
+	}
+});
 //# sourceMappingURL=main.js.map
