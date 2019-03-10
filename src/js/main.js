@@ -7,16 +7,60 @@ let app = new PIXI.Application({
 	transparent: true
 });
 
-let imageFilterApp = new PIXI.Application({
+let hanselCanvas = new PIXI.Application({
 	view: document.getElementById("project1"),
 	width: 1280,
 	height: 720, 
 	transparent: true
 });
 
+let vueCanvas = new PIXI.Application({
+	view: document.getElementById("project3"),
+	width: 1280,
+	height: 720, 
+	transparent: true
+});
+
+let slimePireCanvas = new PIXI.Application({
+	view: document.getElementById("project2"),
+	width: 1280,
+	height: 720, 
+	transparent: true
+});
+
+let skCanvas = new PIXI.Application({
+	view: document.getElementById("project4"),
+	width: 1280,
+	height: 720, 
+	transparent: true
+});
+
+let rxbarCanvas = new PIXI.Application({
+	view: document.getElementById("project5"),
+	width: 1280,
+	height: 720, 
+	transparent: true
+});
+
+
+let zelpCanvas = new PIXI.Application({
+	view: document.getElementById("project6"),
+	width: 1280,
+	height: 720, 
+	transparent: true
+});
+
+
 let manifest = [
 	{"key" : "hanselProject", "url" : "dist/img/hanselproject.jpg"},
 	{"key" : "displacement", "url" : "dist/img/displacement2.png"},
+	{"key" : "vueProject", "url" : "dist/img/IGDB.jpg"},
+	{"key" : "slimePireProject", "url" : "dist/img/slimepire.jpg"},
+	{"key" : "skProject", "url" : "dist/img/shakyknees.jpg"},
+	{"key" : "rxbarProject", "url" : "dist/img/rxbar.jpg"},
+	{"key" : "zelpProject", "url" : "dist/img/zelp.jpg"},
+
+
 ];
 
 
@@ -25,6 +69,7 @@ function loadAssets() {
 	app.loader.add(manifest);
 
 	app.loader.load(onAssetsLoaded);
+	
 }
 
 function onAssetsLoaded(loader, resources) {
@@ -43,18 +88,44 @@ function onAssetsLoaded(loader, resources) {
 }
 
 
+
+	
+
 function imageFilter() {
+
 	let hanselProjectImg = new PIXI.Sprite(app.loader.resources.hanselProject.texture);
-	imageFilterApp.stage.addChild(hanselProjectImg);
+	hanselCanvas.stage.addChild(hanselProjectImg);
 
+	
+	let vueProject = new PIXI.Sprite(app.loader.resources. vueProject.texture);
+	vueCanvas.stage.addChild(vueProject);
 
-	let displace= new PIXI.Sprite(app.loader.resources.displacement.texture);
+	let slimePireProject = new PIXI.Sprite(app.loader.resources.slimePireProject.texture);
+	slimePireCanvas.stage.addChild(slimePireProject);
+
+	let skProject = new PIXI.Sprite(app.loader.resources.skProject.texture);
+	skCanvas.stage.addChild(skProject);
+
+	let rxbarProject = new PIXI.Sprite(app.loader.resources.rxbarProject.texture);
+	rxbarCanvas.stage.addChild(rxbarProject);
+	
+	let zelpProject = new PIXI.Sprite(app.loader.resources.zelpProject.texture);
+	zelpCanvas.stage.addChild(zelpProject);
+
+	let displace = new PIXI.Sprite(app.loader.resources.displacement.texture);
 	let displaceFilter = new PIXI.filters.DisplacementFilter(displace);
-
-	imageFilterApp.stage.filters = [displaceFilter];
 	displaceFilter.scale.set(0);
+	
+	vueCanvas.stage.filters = [displaceFilter];
+	hanselCanvas.stage.filters = [displaceFilter];
+	slimePireCanvas.stage.filters = [displaceFilter];
+	skCanvas.stage.filters = [displaceFilter];
+	rxbarCanvas.stage.filters = [displaceFilter];
+	zelpCanvas.stage.filters = [displaceFilter];
+	
+	
 
-	imageFilterApp.view.addEventListener("mouseover", function(){
+	hanselCanvas.view.addEventListener("mouseover", function(){
 		TweenMax.fromTo(displaceFilter.scale, 1, {
 			x: 50, 
 			y: 50
@@ -66,7 +137,33 @@ function imageFilter() {
 
 	});
 
+	vueCanvas.view.addEventListener("mouseover", function(){
+		TweenMax.fromTo(displaceFilter.scale, 1, {
+			x: 50, 
+			y: 50
+		}, 
+		{	x: 0, 
+			y: 0, 
+			ease: Elastic.easeOut,
+		});
+
+	});
+
+	slimePireCanvas.view.addEventListener("mouseover", function(){
+		TweenMax.fromTo(displaceFilter.scale, 1, {
+			x: 50, 
+			y: 50
+		}, 
+		{	x: 0, 
+			y: 0, 
+			ease: Elastic.easeOut,
+		});
+
+	});
+
+
 }
+	
 
 
 function setupScrollProgress() {
@@ -114,8 +211,8 @@ function godRayFilter() {
 	
 	window.addEventListener("mousemove", (e) => {
 
-		let mouseXcord = e.x - 400;
-		godRay.angle = mouseXcord * 0.02;
+		let mouseXcord = e.x - 500;
+		godRay.angle = mouseXcord * 0.01;
 	})
 }
 
@@ -133,13 +230,74 @@ function setupTextDecompose() {
 	const styleTagLine = new PIXI.TextStyle({
 		fill: "#c3771c",
 		fontFamily: "\"Lucida Console\", Monaco, monospace",
-		fontSize: 30,
+		fontSize: 50,
 		fontVariant: "small-caps",
 		fontWeight: "bold"
 	});
 
-	let tagLine = new PIXI.Text("Interactive Developer", styleTagLine);
-	app.stage.addChild(tagLine);
+	const styleEmail = new PIXI.TextStyle({
+		fill: "#f1a91c",
+		fontFamily: "\"Lucida Console\", Monaco, monospace",
+		fontSize: 35,
+		fontVariant: "small-caps",
+		fontWeight: "bold"
+	});
+
+	app.tagLine = new PIXI.Text("Interactive Developer", styleTagLine);
+	app.stage.addChild(app.tagLine);
+	app.email = new PIXI.Text("mcmillandanny@gmail.com", styleEmail);
+	app.stage.addChild(app.email);
+
+
+	app.email.pos = {
+		x: 450,
+		y: 370
+	}
+
+	app.email.endPos = {
+		x : 5000,
+		y : 0
+	}
+
+	app.tagLine.pos = {
+		x : 400,
+		y : 300
+	}
+
+	app.tagLine.endPos = {
+		x : -5000,
+		y : -0
+	}
+
+	TweenMax.fromTo(app.email.pos, 1.1, {
+		x: 470,
+		y: 1000,
+	},
+	{
+		x: app.email.pos.x, 
+		y: app.email.pos.y,
+		ease: Bounce.easeOut,
+	})
+
+	TweenMax.fromTo(app.tagLine.pos, 2, {
+		x: -1000,
+		y: 300,
+	},
+	{
+		x: app.tagLine.pos.x, 
+		y: app.tagLine.pos.y,
+		ease: Elastic.easeOut.config(1, 0.3)
+	})
+
+	
+
+	app.tagLine.x = app.tagLine.pos.x;
+	app.tagLine.y = app.tagLine.pos.y;
+
+	app.email.x = app.email.pos.x;
+	app.email.y = app.email.pos.y;
+
+
 
 	app.letters = [
 		new PIXI.Text('D', style),
@@ -171,13 +329,15 @@ function setupTextDecompose() {
 
 		letter.initPos = {
 			x : 330 + 50 * i + kerning[i],
-			y : 120
+			y : 220
 		}
 
 		letter.endPoint = {
 			x: 500, 
-			y: -1000
+			y: -2000
 		}
+
+		
 
 		letter.x = letter.initPos.x;
 		letter.y = letter.initPos.y;
@@ -190,7 +350,7 @@ function setupTextDecompose() {
 
 		if (letter.tweening === true) {
 
-			TweenMax.fromTo(letter, .5, 
+			TweenMax.fromTo(letter, 1.2, 
 			{
 				y: Math.random() * window.innerHeight,
 				ease: Power2.easeIn,
@@ -270,11 +430,19 @@ function update(e) {
 			else {
 				letter.x = lerp(letter.initPos.x, letter.endPoint.x, percentScrolled);
 				letter.y = lerp(letter.initPos.y, letter.endPoint.y, percentScrolled);
+				
 			}
+
+				app.tagLine.x = lerp(app.tagLine.pos.x, app.tagLine.endPos.x, percentScrolled);
+				app.tagLine.y =lerp(app.tagLine.pos.y, app.tagLine.endPos.y, percentScrolled);
+
+				app.email.x = lerp(app.email.pos.x, app.email.endPos.x, percentScrolled);
+				app.email.y =lerp(app.email.pos.y, app.email.endPos.y, percentScrolled);
 	})
 
+
 	godRay.time += .001;
-	
+
 }
 
 function lerp(start, end, t) {
@@ -341,11 +509,11 @@ function hamburgerToggle() {
 hamburger.addEventListener("click", hamburgerToggle);
 
 
-
+//waypoints
 
 var waypoint = new Waypoint({
 	element: document.querySelector('.p1'),
 	handler: function() {
-	  alert('Basic waypoint triggered')
+	//   alert('Basic waypoint triggered')
 	}
   })
