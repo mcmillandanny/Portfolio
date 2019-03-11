@@ -391,11 +391,6 @@ var shaderBlock2 = document.querySelector(".shader-block2");
 var width = Math.ceil(Math.random() * 1000);
 var height = Math.ceil(Math.random() * 1000);
 
-//make random number between 200-500
-//each div width/height should be different
-//clear the results when hamburger is closed
-
-
 function hamburgerToggle() {
 	lines.forEach(function (line) {
 		line.classList.toggle("change");
@@ -427,22 +422,112 @@ function hamburgerToggle() {
 	});
 };
 hamburger.addEventListener("click", hamburgerToggle);
-var slideOutText = document.querySelector('.slide-out-text');
+var slideOutTextP1 = document.querySelector('.slide-out-text');
+var slideOutTextP2 = document.querySelector('.slide-out-text2');
+var slideOutTextP3 = document.querySelector('.slide-out-text3');
+var slideOutTextP4 = document.querySelector('.slide-out-text4');
+var slideOutTextP5 = document.querySelector('.slide-out-text5');
+var slideOutTextP6 = document.querySelector('.slide-out-text6');
 
 //waypoints
 
 var waypoint = new Waypoint({
-	element: slideOutText,
+	element: slideOutTextP1,
 	offset: "50%",
 	handler: function handler(direction) {
 		if (direction === 'down') {
 			console.log('triggerd down scroll');
-			TweenMax.to(slideOutText, .3, {
-				left: '0%'
+			TweenMax.to(slideOutTextP1, .3, {
+				left: '5%'
 			});
 		} else if (direction === "up") {
-			TweenMax.to(slideOutText, .3, {
+			TweenMax.to(slideOutTextP1, .3, {
 				left: '50%'
+			});
+		}
+	}
+});
+
+var waypoint2 = new Waypoint({
+	element: slideOutTextP2,
+	offset: "50%",
+	handler: function handler(direction) {
+		if (direction === 'down') {
+			console.log('triggerd down scroll');
+			TweenMax.to(slideOutTextP2, .3, {
+				left: '55%'
+			});
+		} else if (direction === "up") {
+			TweenMax.to(slideOutTextP2, .3, {
+				left: '5%'
+			});
+		}
+	}
+});
+
+var waypoint3 = new Waypoint({
+	element: slideOutTextP3,
+	offset: "50%",
+	handler: function handler(direction) {
+		if (direction === 'down') {
+			console.log('triggerd down scroll');
+			TweenMax.to(slideOutTextP3, .3, {
+				left: '5%'
+			});
+		} else if (direction === "up") {
+			TweenMax.to(slideOutTextP3, .3, {
+				left: '50%'
+			});
+		}
+	}
+});
+
+var waypoint4 = new Waypoint({
+	element: slideOutTextP4,
+	offset: "50%",
+	handler: function handler(direction) {
+		if (direction === 'down') {
+			console.log('triggerd down scroll');
+			TweenMax.to(slideOutTextP4, .3, {
+				left: '55%'
+			});
+		} else if (direction === "up") {
+			TweenMax.to(slideOutTextP4, .3, {
+				left: '4%'
+			});
+		}
+	}
+});
+
+var waypoint5 = new Waypoint({
+	element: slideOutTextP5,
+	offset: "50%",
+	handler: function handler(direction) {
+		if (direction === 'down') {
+			console.log('triggerd down scroll');
+			TweenMax.to(slideOutTextP5, .3, {
+				left: '5%'
+			});
+		} else if (direction === "up") {
+			TweenMax.to(slideOutTextP5, .3, {
+				left: '55%'
+			});
+		}
+	}
+});
+
+var waypoint6 = new Waypoint({
+	element: slideOutTextP6,
+	offset: "50%",
+	handler: function handler(direction) {
+		if (direction === 'down') {
+			console.log('triggerd down scroll');
+			TweenMax.to(slideOutTextP6, .3, {
+				left: '55%'
+			});
+		} else if (direction === "up") {
+			TweenMax.to(slideOutTextP6, .3, {
+				left: '5%'
 			});
 		}
 	}

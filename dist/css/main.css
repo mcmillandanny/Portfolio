@@ -203,7 +203,7 @@ h1 {
 }
 
 @media (min-width: 768px) {
-	.porfolio-wrapper section {
+	.porfolio-wrapper .slide-out-text {
 		position: absolute;
 		top: 3%;
 		left: 60%;
@@ -211,7 +211,66 @@ h1 {
 		z-index: -1;
 		background-color: black;
 		padding: 10px;
-		transition: .3s;
+	}
+}
+
+@media (min-width: 768px) {
+	.porfolio-wrapper .slide-out-text2 {
+		position: absolute;
+		top: 12.5%;
+		left: 4%;
+		max-width: 40%;
+		z-index: -1;
+		background-color: black;
+		padding: 10px;
+	}
+}
+
+@media (min-width: 768px) {
+	.porfolio-wrapper .slide-out-text3 {
+		position: absolute;
+		top: 23.5%;
+		left: 4%;
+		max-width: 40%;
+		z-index: -1;
+		background-color: black;
+		padding: 10px;
+	}
+}
+
+@media (min-width: 768px) {
+	.porfolio-wrapper .slide-out-text4 {
+		position: absolute;
+		top: 34.5%;
+		left: 4%;
+		max-width: 40%;
+		z-index: -1;
+		background-color: black;
+		padding: 10px;
+	}
+}
+
+@media (min-width: 768px) {
+	.porfolio-wrapper .slide-out-text5 {
+		position: absolute;
+		top: 45.5%;
+		left: 4%;
+		max-width: 40%;
+		z-index: -1;
+		background-color: black;
+		padding: 10px;
+	}
+}
+
+@media (min-width: 768px) {
+	.porfolio-wrapper .slide-out-text6 {
+		position: absolute;
+		top: 55.5%;
+		left: 4%;
+		max-width: 40%;
+		z-index: -1;
+		background-color: black;
+		padding: 10px;
 	}
 }
 
