@@ -124,6 +124,7 @@ function imageFilter() {
 	zelpCanvas.stage.filters = [displaceFilter];
 	
 	
+	
 
 	hanselCanvas.view.addEventListener("mouseover", function(){
 		TweenMax.fromTo(displaceFilter.scale, 1, {
@@ -512,8 +513,8 @@ hamburger.addEventListener("click", hamburgerToggle);
 //waypoints
 
 var waypoint = new Waypoint({
-	element: document.querySelector('.p1'),
+	element: document.querySelector('.slide-out-text'),
 	handler: function() {
-	//   alert('Basic waypoint triggered')
+	  console.log('Basic waypoint triggered')
 	}
   })

@@ -431,9 +431,9 @@ hamburger.addEventListener("click", hamburgerToggle);
 //waypoints
 
 var waypoint = new Waypoint({
-	element: document.querySelector('.p1'),
+	element: document.querySelector('.slide-out-text'),
 	handler: function handler() {
-		//   alert('Basic waypoint triggered')
+		console.log('Basic waypoint triggered');
 	}
 });
 //# sourceMappingURL=main.js.map
