@@ -205,17 +205,14 @@ h1 {
 @media (min-width: 768px) {
 	.porfolio-wrapper section {
 		position: absolute;
-		display: inline-block;
 		top: 3%;
-		left: 49%;
+		left: 60%;
 		max-width: 40%;
 		z-index: -1;
-		transition: 1s;
+		background-color: black;
+		padding: 10px;
+		transition: .3s;
 	}
-}
-
-.porfolio-wrapper.show {
-	left: 10%;
 }
 
 #project1, #project2, #project3, #project4, #project5, #project6 {

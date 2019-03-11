@@ -174,21 +174,17 @@ h1 {
 
 		@include tablet() {
 			position: absolute;
-			display: inline-block;
 			top: 3%;
-			left: 49%;
+			left: 60%;
 			max-width: 40%;
 			z-index: -1;
+			background-color: black;
+			padding: 10px; 
 
-			transition: 1s;
+			transition: .3s;
 		}
 		
 	}
-
-	&.show {
-		left: 10%;
-	}
-
 }
 #project1, #project2, #project3, #project4, #project5, #project6  {
 	width: 100%;

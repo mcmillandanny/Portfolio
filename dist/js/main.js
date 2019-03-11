@@ -427,13 +427,24 @@ function hamburgerToggle() {
 	});
 };
 hamburger.addEventListener("click", hamburgerToggle);
+var slideOutText = document.querySelector('.slide-out-text');
 
 //waypoints
 
 var waypoint = new Waypoint({
-	element: document.querySelector('.slide-out-text'),
-	handler: function handler() {
-		console.log('Basic waypoint triggered');
+	element: slideOutText,
+	offset: "50%",
+	handler: function handler(direction) {
+		if (direction === 'down') {
+			console.log('triggerd down scroll');
+			TweenMax.to(slideOutText, .3, {
+				left: '0%'
+			});
+		} else if (direction === "up") {
+			TweenMax.to(slideOutText, .3, {
+				left: '50%'
+			});
+		}
 	}
 });
 //# sourceMappingURL=main.js.map

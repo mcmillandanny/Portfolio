@@ -508,13 +508,24 @@ function hamburgerToggle() {
 	)
 };
 hamburger.addEventListener("click", hamburgerToggle);
-
+let slideOutText = document.querySelector('.slide-out-text');
 
 //waypoints
 
 var waypoint = new Waypoint({
-	element: document.querySelector('.slide-out-text'),
-	handler: function() {
-	  console.log('Basic waypoint triggered')
+	element: slideOutText,
+	offset: "50%",
+	handler: function(direction) {
+		if (direction === 'down') {
+			console.log('triggerd down scroll')
+			TweenMax.to(slideOutText, .3, {
+				left: '0%'
+			})
+		}
+		else if (direction === "up") {
+			TweenMax.to(slideOutText, .3, {
+				left: '50%'
+			})
+		}
 	}
   })
