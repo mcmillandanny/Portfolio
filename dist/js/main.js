@@ -51,7 +51,21 @@ var zelpCanvas = new PIXI.Application({
 	transparent: true
 });
 
-var manifest = [{ "key": "hanselProject", "url": "dist/img/hanselproject.jpg" }, { "key": "displacement", "url": "dist/img/displacement2.png" }, { "key": "vueProject", "url": "dist/img/IGDB.jpg" }, { "key": "slimePireProject", "url": "dist/img/slimepire.jpg" }, { "key": "skProject", "url": "dist/img/shakyknees.jpg" }, { "key": "rxbarProject", "url": "dist/img/rxbar.jpg" }, { "key": "zelpProject", "url": "dist/img/zelp.jpg" }];
+var hipsterCanvas = new PIXI.Application({
+	view: document.getElementById("project7"),
+	width: 1280,
+	height: 720,
+	transparent: true
+});
+
+var drumCanvas = new PIXI.Application({
+	view: document.getElementById("project8"),
+	width: 1280,
+	height: 720,
+	transparent: true
+});
+
+var manifest = [{ "key": "hanselProject", "url": "dist/img/hanselproject.jpg" }, { "key": "displacement", "url": "dist/img/displacement2.png" }, { "key": "vueProject", "url": "dist/img/IGDB.jpg" }, { "key": "slimePireProject", "url": "dist/img/slimepire.jpg" }, { "key": "skProject", "url": "dist/img/shakyknees.jpg" }, { "key": "rxbarProject", "url": "dist/img/rxbar.jpg" }, { "key": "zelpProject", "url": "dist/img/zelp.jpg" }, { "key": "nodeProject", "url": "dist/img/node.jpg" }];
 
 function loadAssets() {
 	app.loader.add(manifest);
@@ -93,6 +107,12 @@ function imageFilter() {
 
 	var zelpProject = new PIXI.Sprite(app.loader.resources.zelpProject.texture);
 	zelpCanvas.stage.addChild(zelpProject);
+
+	var nodeProjectImg = new PIXI.Sprite(app.loader.resources.nodeProject.texture);
+	hipsterCanvas.stage.addChild(nodeProjectImg);
+
+	var drumProjectImg = new PIXI.Sprite(app.loader.resources.nodeProject.texture);
+	drumCanvas.stage.addChild(drumProjectImg);
 
 	var displace = new PIXI.Sprite(app.loader.resources.displacement.texture);
 	var displaceFilter = new PIXI.filters.DisplacementFilter(displace);
@@ -396,6 +416,8 @@ var slideOutTextP3 = document.querySelector('.slide-out-text3');
 var slideOutTextP4 = document.querySelector('.slide-out-text4');
 var slideOutTextP5 = document.querySelector('.slide-out-text5');
 var slideOutTextP6 = document.querySelector('.slide-out-text6');
+var slideOutTextP7 = document.querySelector('.slide-out-text7');
+var slideOutTextP8 = document.querySelector('.slide-out-text8');
 
 //waypoints
 
@@ -489,6 +511,38 @@ var waypoint6 = new Waypoint({
 			});
 		} else if (direction === "up") {
 			TweenMax.to(slideOutTextP6, .3, {
+				left: '5%'
+			});
+		}
+	}
+});
+
+var waypoint7 = new Waypoint({
+	element: slideOutTextP7,
+	offset: "50%",
+	handler: function handler(direction) {
+		if (direction === 'down') {
+			TweenMax.to(slideOutTextP7, .3, {
+				left: '5%'
+			});
+		} else if (direction === "up") {
+			TweenMax.to(slideOutTextP7, .3, {
+				left: '55%'
+			});
+		}
+	}
+});
+
+var waypoint8 = new Waypoint({
+	element: slideOutTextP8,
+	offset: "50%",
+	handler: function handler(direction) {
+		if (direction === 'down') {
+			TweenMax.to(slideOutTextP8, .3, {
+				left: '55%'
+			});
+		} else if (direction === "up") {
+			TweenMax.to(slideOutTextP8, .3, {
 				left: '5%'
 			});
 		}

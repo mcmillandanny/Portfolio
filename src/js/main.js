@@ -50,6 +50,20 @@ let zelpCanvas = new PIXI.Application({
 	transparent: true
 });
 
+let hipsterCanvas = new PIXI.Application({
+	view: document.getElementById("project7"),
+	width: 1280,
+	height: 720, 
+	transparent: true
+});
+
+let drumCanvas = new PIXI.Application({
+	view: document.getElementById("project8"),
+	width: 1280,
+	height: 720, 
+	transparent: true
+});
+
 
 let manifest = [
 	{"key" : "hanselProject", "url" : "dist/img/hanselproject.jpg"},
@@ -59,6 +73,7 @@ let manifest = [
 	{"key" : "skProject", "url" : "dist/img/shakyknees.jpg"},
 	{"key" : "rxbarProject", "url" : "dist/img/rxbar.jpg"},
 	{"key" : "zelpProject", "url" : "dist/img/zelp.jpg"},
+	{"key" : "nodeProject", "url" : "dist/img/node.jpg"},
 
 
 ];
@@ -111,6 +126,13 @@ function imageFilter() {
 	
 	let zelpProject = new PIXI.Sprite(app.loader.resources.zelpProject.texture);
 	zelpCanvas.stage.addChild(zelpProject);
+
+	let nodeProjectImg = new PIXI.Sprite(app.loader.resources.nodeProject.texture);
+	hipsterCanvas.stage.addChild(nodeProjectImg);
+
+	let drumProjectImg = new PIXI.Sprite(app.loader.resources.nodeProject.texture);
+	drumCanvas.stage.addChild(drumProjectImg);
+
 
 	let displace = new PIXI.Sprite(app.loader.resources.displacement.texture);
 	let displaceFilter = new PIXI.filters.DisplacementFilter(displace);
@@ -470,6 +492,8 @@ let slideOutTextP3 = document.querySelector('.slide-out-text3');
 let slideOutTextP4 = document.querySelector('.slide-out-text4');
 let slideOutTextP5 = document.querySelector('.slide-out-text5');
 let slideOutTextP6 = document.querySelector('.slide-out-text6');
+let slideOutTextP7 = document.querySelector('.slide-out-text7');
+let slideOutTextP8 = document.querySelector('.slide-out-text8');
 
 
 //waypoints
@@ -570,6 +594,41 @@ var waypoint = new Waypoint({
 		}
 		else if (direction === "up") {
 			TweenMax.to(slideOutTextP6, .3, {
+				left: '5%'
+			})
+		}
+	}
+  })
+
+  var waypoint7 = new Waypoint({
+	element: slideOutTextP7,
+	offset: "50%",
+	handler: function(direction) {
+		if (direction === 'down') {
+			TweenMax.to(slideOutTextP7, .3, {
+				left: '5%'
+			})
+		}
+		else if (direction === "up") {
+			TweenMax.to(slideOutTextP7, .3, {
+				left: '55%'
+			})
+		}
+	}
+  })
+
+
+  var waypoint8 = new Waypoint({
+	element: slideOutTextP8,
+	offset: "50%",
+	handler: function(direction) {
+		if (direction === 'down') {
+			TweenMax.to(slideOutTextP8, .3, {
+				left: '55%'
+			})
+		}
+		else if (direction === "up") {
+			TweenMax.to(slideOutTextP8, .3, {
 				left: '5%'
 			})
 		}

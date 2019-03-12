@@ -136,7 +136,7 @@ h1 {
 
 		@include tablet() {
 			position: absolute;
-			top: 12.5%;
+			top: 15.5%;
 			left: 4%;
 			max-width: 40%;
 			z-index: -1;
@@ -150,7 +150,7 @@ h1 {
 
 		@include tablet() {
 			position: absolute;
-			top: 23.5%;
+			top: 28.5%;
 			left: 40%;
 			max-width: 40%;
 			z-index: -1;
@@ -164,7 +164,7 @@ h1 {
 
 		@include tablet() {
 			position: absolute;
-			top: 34.5%;
+			top: 40.5%;
 			left: 4%;
 			max-width: 40%;
 			z-index: -1;
@@ -178,7 +178,7 @@ h1 {
 
 		@include tablet() {
 			position: absolute;
-			top: 45.5%;
+			top: 53%;
 			left: 60%;
 			max-width: 40%;
 			z-index: -1;
@@ -193,7 +193,36 @@ h1 {
 
 		@include tablet() {
 			position: absolute;
-			top: 55.5%;
+			top: 66.5%;
+			left: 4%;
+			max-width: 40%;
+			z-index: -1;
+			background-color:rgba(0,0,50, .2);
+			padding: 10px; 
+
+		}
+	}
+
+	.slide-out-text7 {
+
+		@include tablet() {
+			position: absolute;
+			top: 78.9%;
+			left: 20%;
+			max-width: 40%;
+			z-index: -1;
+			background-color:rgba(0,0,50, .2);
+			padding: 10px; 
+
+		}
+	}
+
+
+	.slide-out-text8 {
+
+		@include tablet() {
+			position: absolute;
+			top: 91.9%;
 			left: 4%;
 			max-width: 40%;
 			z-index: -1;
@@ -203,7 +232,7 @@ h1 {
 		}
 	}
 }
-#project1, #project2, #project3, #project4, #project5, #project6  {
+#project1, #project2, #project3, #project4, #project5, #project6, #project7, #project8 {
 	width: 100%;
 }
 
@@ -303,18 +332,51 @@ h1 {
 		}
 	}
 
-	.extra-wrapper {
-		display: inline-block;
+	.extra-wrapper1 {
+		position: absolute;
+		top: 40%;
+		left: 10%;
 		width: 31%;
-		margin-left: 2px;
-		margin-top: 10px;
 		padding: 5px;
+		pointer-events: auto;
+
+		@include tablet() {
+			left: 30%;
+			top: 40%;
+		}
 
 
 		p{
 			color: #eadbb0;
 			width: fit-content;
-			font-size: 11px;
+			font-size: 15px;
+
+			@include tablet() {
+				font-size: 20px;
+			}
+		}
+		img {
+			width: 100%;
+		}
+	}
+
+	.extra-wrapper2 {
+		width: 31%;
+		padding: 5px;
+		position: absolute;
+		top: 40%;
+		left: 60%;
+		pointer-events: auto;
+
+		@include tablet() {
+			left: 80%;
+		}
+
+
+		p{
+			color: #eadbb0;
+			width: fit-content;
+			font-size: 15px;
 
 			@include tablet() {
 				font-size: 20px;
