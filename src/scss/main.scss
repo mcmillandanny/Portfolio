@@ -165,7 +165,7 @@ h1 {
 		@include tablet() {
 			position: absolute;
 			top: 34.5%;
-			left: 40%;
+			left: 4%;
 			max-width: 40%;
 			z-index: -1;
 			background-color:rgba(0,0,50, .2);
@@ -179,7 +179,7 @@ h1 {
 		@include tablet() {
 			position: absolute;
 			top: 45.5%;
-			left: 4%;
+			left: 60%;
 			max-width: 40%;
 			z-index: -1;
 			background-color:rgba(0,0,50, .2);
@@ -324,9 +324,29 @@ h1 {
 			width: 100%;
 		}
 	}
+}
 
+.social-icons {
+	width: 50%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 150px;
+	margin-bottom: 120px;
+	padding: 10px;
+	pointer-events: auto;
+	
 
+	.wrapper-icons {
+		width: 100%;
+		display: inline-block;
+		text-align: center;
 
+		img {
+			cursor: pointer;
+			width: 20%;
+		}
+	}
+	
 }
 
 

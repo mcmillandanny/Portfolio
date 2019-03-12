@@ -479,7 +479,6 @@ var waypoint = new Waypoint({
 	offset: "50%",
 	handler: function(direction) {
 		if (direction === 'down') {
-			console.log('triggerd down scroll')
 			TweenMax.to(slideOutTextP1, .3, {
 				left: '5%'
 			})
@@ -497,7 +496,6 @@ var waypoint = new Waypoint({
 	offset: "50%",
 	handler: function(direction) {
 		if (direction === 'down') {
-			console.log('triggerd down scroll')
 			TweenMax.to(slideOutTextP2, .3, {
 				left: '55%'
 			})
@@ -515,7 +513,6 @@ var waypoint = new Waypoint({
 	offset: "50%",
 	handler: function(direction) {
 		if (direction === 'down') {
-			console.log('triggerd down scroll')
 			TweenMax.to(slideOutTextP3, .3, {
 				left: '5%'
 			})
@@ -533,7 +530,6 @@ var waypoint = new Waypoint({
 	offset: "50%",
 	handler: function(direction) {
 		if (direction === 'down') {
-			console.log('triggerd down scroll')
 			TweenMax.to(slideOutTextP4, .3, {
 				left: '55%'
 			})
@@ -551,7 +547,6 @@ var waypoint = new Waypoint({
 	offset: "50%",
 	handler: function(direction) {
 		if (direction === 'down') {
-			console.log('triggerd down scroll')
 			TweenMax.to(slideOutTextP5, .3, {
 				left: '5%'
 			})
@@ -569,7 +564,6 @@ var waypoint = new Waypoint({
 	offset: "50%",
 	handler: function(direction) {
 		if (direction === 'down') {
-			console.log('triggerd down scroll')
 			TweenMax.to(slideOutTextP6, .3, {
 				left: '55%'
 			})
@@ -581,3 +575,4 @@ var waypoint = new Waypoint({
 		}
 	}
   })
+

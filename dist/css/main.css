@@ -191,7 +191,7 @@ h1 {
 	.porfolio-wrapper .slide-out-text4 {
 		position: absolute;
 		top: 34.5%;
-		left: 40%;
+		left: 4%;
 		max-width: 40%;
 		z-index: -1;
 		background-color: rgba(0, 0, 50, 0.2);
@@ -203,7 +203,7 @@ h1 {
 	.porfolio-wrapper .slide-out-text5 {
 		position: absolute;
 		top: 45.5%;
-		left: 4%;
+		left: 60%;
 		max-width: 40%;
 		z-index: -1;
 		background-color: rgba(0, 0, 50, 0.2);
@@ -342,6 +342,27 @@ h1 {
 
 .extra-work-wrapper .extra-wrapper img {
 	width: 100%;
+}
+
+.social-icons {
+	width: 50%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 150px;
+	margin-bottom: 120px;
+	padding: 10px;
+	pointer-events: auto;
+}
+
+.social-icons .wrapper-icons {
+	width: 100%;
+	display: inline-block;
+	text-align: center;
+}
+
+.social-icons .wrapper-icons img {
+	cursor: pointer;
+	width: 20%;
 }
 
 /*# sourceMappingURL=main.css.map */
