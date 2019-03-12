@@ -61,64 +61,9 @@ h1 {
 	top: 0;
 	left: 0;
 	width: 100%;
-	// height: 100%;
 	overflow: hidden;
 	background: $lightblue;
 	z-index: 2;
-
-	#hamburger {
-		z-index: 20;
-		display: inline-block;
-		padding: 10px 10px 0px 10px;
-		cursor: pointer;
-		pointer-events: auto;
-		position: absolute;
-
-
-		.line-1 {
-			width: 25px;
-			height: 3px;
-			border-radius: 10px;
-			background-color: white;
-			margin: 6px 0;
-			transition: 0.4s; 
-		}
-
-		.line-2 {
-			width: 35px;
-			height: 3px;
-			border-radius: 10px;
-			background-color: white;
-			margin: 6px 0;
-			transition: 0.4s;
-		}
-		
-		.line-3 {
-			width: 45px;
-			height: 3px;
-			border-radius: 10px;
-			background-color: white;
-			margin: 6px 0;
-			transition: 0.4s ease-in-out;
-		}
-
-		.change.line-1 {
-			transform: rotate(-45deg) translate(-5px, 3px);
-			width: 45px;
-		}
-
-		.change.line-2 {
-			opacity: 0;
-		}
-
-		.change.line-3 {
-			transform: rotate(45deg) translate(-8px, -8px) ;
-		}
-
-		#hamburger.menu-ani {
-			transition: .7;
-		}
-	}
 }
 
 #backgroundCanvas {
@@ -127,7 +72,7 @@ h1 {
 
 .porfolio-wrapper div{
 	pointer-events: auto;
-	text-align: center;
+	text-align: left;
 	width: 100%;
 	margin: auto;
 	display: flex;
@@ -158,6 +103,8 @@ h1 {
 		color: $accnent-color;
 		word-wrap: break-word;
 		padding: 10px;	
+		line-height: 1.2;
+		font-weight: 200;
 	}
 		img {
 		width: 100%;
@@ -178,7 +125,7 @@ h1 {
 			left: 60%;
 			max-width: 40%;
 			z-index: -1;
-			background-color: black;
+			background-color:rgba(0,0,50, .2);
 			padding: 10px; 
 
 		}
@@ -193,7 +140,7 @@ h1 {
 			left: 4%;
 			max-width: 40%;
 			z-index: -1;
-			background-color: black;
+			background-color:rgba(0,0,50, .2);
 			padding: 10px; 
 
 		}
@@ -204,10 +151,10 @@ h1 {
 		@include tablet() {
 			position: absolute;
 			top: 23.5%;
-			left: 4%;
+			left: 40%;
 			max-width: 40%;
 			z-index: -1;
-			background-color: black;
+			background-color:rgba(0,0,50, .2);
 			padding: 10px; 
 
 		}
@@ -218,10 +165,10 @@ h1 {
 		@include tablet() {
 			position: absolute;
 			top: 34.5%;
-			left: 4%;
+			left: 40%;
 			max-width: 40%;
 			z-index: -1;
-			background-color: black;
+			background-color:rgba(0,0,50, .2);
 			padding: 10px; 
 
 		}
@@ -235,7 +182,7 @@ h1 {
 			left: 4%;
 			max-width: 40%;
 			z-index: -1;
-			background-color: black;
+			background-color:rgba(0,0,50, .2);
 			padding: 10px; 
 
 		}
@@ -250,7 +197,7 @@ h1 {
 			left: 4%;
 			max-width: 40%;
 			z-index: -1;
-			background-color: black;
+			background-color:rgba(0,0,50, .2);
 			padding: 10px; 
 
 		}
@@ -260,6 +207,127 @@ h1 {
 	width: 100%;
 }
 
+
+.container {
+	width: 100%;
+	display: block;
+	position: relative;
+
+	.about-me-wrapper {
+		z-index: 24;
+		display: inline-block;
+		padding: 10px;
+		background-color:rgba(0,0,50, .2);
+		position: relative;
+		height: 300px;
+		margin: 20px;
+		
+	
+	
+			@include tablet() {
+				width: 60%;
+				padding: 10px;
+				margin-left: auto;
+				display: block;
+			}
+	
+		h1 {
+			margin: 10px;
+			border-bottom: 1px solid black;
+			@include tablet() {
+	
+			}
+		}
+		p {
+			display: inline-block;
+			text-align: center;
+			color: #eadbb0;
+			font-size: 15px;
+			padding: 10px;
+		
+			
+			@include tablet() {
+				display: block;
+				font-size: 17px;
+				padding: 10px;
+				width: 70%;
+				text-align: left;
+				margin-left: auto;
+			}
+		}
+		img {
+			width: 30%;
+			display: block;
+			margin: auto;
+			margin-top: 20px;
+		
+			@include tablet() {
+				width: 35%;
+				display: inline-block;
+				vertical-align: middle;
+				position: absolute;
+				top: 25%;
+				left: -30%;
+				margin-bottom: 20px;
+	
+			}
+		}
+	}
+}
+
+
+.extra-work-wrapper {
+	z-index: 24;
+	padding: 10px;
+	background-color:rgba(0,0,50, .2);
+	position: relative;
+	height: 250px;
+	margin-top: 120px;
+	width: 100%;
+	margin-bottom: 40px;
+	margin-right: 10px;
+
+
+	@include tablet() {
+		width: 65%;
+		padding: 10px;	
+		margin-left: 20px;
+
+	}
+
+	h1 {
+		margin: 10px;
+		border-bottom: 1px solid black;
+		@include tablet() {
+
+		}
+	}
+
+	.extra-wrapper {
+		display: inline-block;
+		width: 31%;
+		margin-left: 2px;
+		margin-top: 10px;
+		padding: 5px;
+
+
+		p{
+			color: #eadbb0;
+			width: fit-content;
+			font-size: 11px;
+
+			@include tablet() {
+				font-size: 20px;
+			}
+		}
+		img {
+			width: 100%;
+		}
+	}
+
+
+
+}
 
 
 

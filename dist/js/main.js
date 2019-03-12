@@ -383,7 +383,6 @@ window.onload = function () {
 	loadAssets();
 };
 
-var hamburger = document.getElementById('hamburger');
 var lines = document.querySelectorAll('.lines');
 var shaderBlock1 = document.querySelector(".shader-block1");
 var shaderBlock2 = document.querySelector(".shader-block2");
@@ -391,37 +390,6 @@ var shaderBlock2 = document.querySelector(".shader-block2");
 var width = Math.ceil(Math.random() * 1000);
 var height = Math.ceil(Math.random() * 1000);
 
-function hamburgerToggle() {
-	lines.forEach(function (line) {
-		line.classList.toggle("change");
-		console.log('clicked');
-	});
-	TweenMax.fromTo(shaderBlock1, .3, {
-		width: 0,
-		height: 0,
-		x: 0,
-		y: 0
-
-	}, {
-		width: width,
-		height: height,
-		x: 0,
-		y: 0
-	});
-	TweenMax.fromTo(shaderBlock2, .3, {
-		width: 0,
-		height: 0,
-		x: 0,
-		y: 0
-
-	}, {
-		width: width,
-		height: height,
-		x: 0,
-		y: 0
-	});
-};
-hamburger.addEventListener("click", hamburgerToggle);
 var slideOutTextP1 = document.querySelector('.slide-out-text');
 var slideOutTextP2 = document.querySelector('.slide-out-text2');
 var slideOutTextP3 = document.querySelector('.slide-out-text3');
