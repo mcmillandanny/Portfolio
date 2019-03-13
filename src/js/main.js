@@ -91,7 +91,7 @@ function onAssetsLoaded(loader, resources) {
 
 	godRayFilter();
 
-	imageFilter();
+	// imageFilter();
 
 	setupScrollProgress();
 
@@ -106,7 +106,7 @@ function onAssetsLoaded(loader, resources) {
 
 	
 
-function imageFilter() {
+// function imageFilter() {
 
 	let hanselProjectImg = new PIXI.Sprite(app.loader.resources.hanselProject.texture);
 	hanselCanvas.stage.addChild(hanselProjectImg);
@@ -185,7 +185,7 @@ function imageFilter() {
 	});
 
 
-}
+// }
 	
 
 
