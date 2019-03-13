@@ -16,6 +16,11 @@ $desktop-bp: 1280px;
 	}
 }
 
+@mixin desktop  {
+	@media (min-width: $desktop-bp) {
+		@content;
+	}
+}
 /* 1. Main Layout ================================= */
 
 * {
@@ -30,6 +35,7 @@ html, body {
 body {
 	font-family: $roboto-font;
 	background: #4f6d7a;
+
 }
 
 h1 {
@@ -48,10 +54,15 @@ h1 {
 	width: 100%;
 	padding: 10px;
 	padding-top: 65%;
+
+	
 	
 
 	h1 {
 		color: $orange;
+		@include desktop() {
+			font-size: 35px;
+		}
 
 	}
 }
@@ -77,6 +88,7 @@ h1 {
 	margin: auto;
 	display: flex;
 	flex-direction: column;
+
 
 	@include tablet() {
 		width: 50%;
@@ -105,6 +117,10 @@ h1 {
 		padding: 10px;	
 		line-height: 1.2;
 		font-weight: 200;
+
+		@include desktop() {
+			font-size: 30px;
+		}
 	}
 		img {
 		width: 100%;
@@ -242,6 +258,14 @@ h1 {
 	display: block;
 	position: relative;
 
+	@include desktop() {
+		width: 60%;
+		margin-left: auto;
+
+	}
+
+	
+
 	.about-me-wrapper {
 		z-index: 24;
 		display: inline-block;
@@ -258,6 +282,11 @@ h1 {
 				padding: 10px;
 				margin-left: auto;
 				display: block;
+			}
+
+			@include desktop() {
+				max-width: 1280px;
+				max-height: 430px;
 			}
 	
 		h1 {
@@ -315,12 +344,22 @@ h1 {
 	width: 100%;
 	margin-bottom: 40px;
 	margin-right: 10px;
+	
+
+	
 
 
 	@include tablet() {
 		width: 65%;
 		padding: 10px;	
 		margin-left: 20px;
+
+	}
+
+	@include desktop() {
+		width: 50%;
+		margin-right: auto;
+		max-height: 430px;
 
 	}
 

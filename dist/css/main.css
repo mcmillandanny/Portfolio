@@ -88,6 +88,12 @@ h1 {
 	color: #f1a91c;
 }
 
+@media (min-width: 1280px) {
+	.content h1 {
+		font-size: 35px;
+	}
+}
+
 .canvasWrapper {
 	position: fixed;
 	top: 0;
@@ -137,6 +143,12 @@ h1 {
 	padding: 10px;
 	line-height: 1.2;
 	font-weight: 200;
+}
+
+@media (min-width: 1280px) {
+	.porfolio-wrapper p {
+		font-size: 30px;
+	}
 }
 
 .porfolio-wrapper img {
@@ -257,6 +269,13 @@ h1 {
 	position: relative;
 }
 
+@media (min-width: 1280px) {
+	.container {
+		width: 60%;
+		margin-left: auto;
+	}
+}
+
 .container .about-me-wrapper {
 	z-index: 24;
 	display: inline-block;
@@ -273,6 +292,13 @@ h1 {
 		padding: 10px;
 		margin-left: auto;
 		display: block;
+	}
+}
+
+@media (min-width: 1280px) {
+	.container .about-me-wrapper {
+		max-width: 1280px;
+		max-height: 430px;
 	}
 }
 
@@ -336,6 +362,14 @@ h1 {
 		width: 65%;
 		padding: 10px;
 		margin-left: 20px;
+	}
+}
+
+@media (min-width: 1280px) {
+	.extra-work-wrapper {
+		width: 50%;
+		margin-right: auto;
+		max-height: 430px;
 	}
 }
 

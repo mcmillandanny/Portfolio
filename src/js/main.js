@@ -91,7 +91,7 @@ function onAssetsLoaded(loader, resources) {
 
 	godRayFilter();
 
-	// imageFilter();
+	imageFilter();
 
 	setupScrollProgress();
 
@@ -106,7 +106,7 @@ function onAssetsLoaded(loader, resources) {
 
 	
 
-// function imageFilter() {
+function imageFilter() {
 
 	let hanselProjectImg = new PIXI.Sprite(app.loader.resources.hanselProject.texture);
 	hanselCanvas.stage.addChild(hanselProjectImg);
@@ -135,15 +135,44 @@ function onAssetsLoaded(loader, resources) {
 
 
 	let displace = new PIXI.Sprite(app.loader.resources.displacement.texture);
+	
+	
+	
+	
 	let displaceFilter = new PIXI.filters.DisplacementFilter(displace);
 	displaceFilter.scale.set(0);
-	
-	vueCanvas.stage.filters = [displaceFilter];
 	hanselCanvas.stage.filters = [displaceFilter];
-	slimePireCanvas.stage.filters = [displaceFilter];
-	skCanvas.stage.filters = [displaceFilter];
-	rxbarCanvas.stage.filters = [displaceFilter];
-	zelpCanvas.stage.filters = [displaceFilter];
+	
+	let blurFilter = new PIXI.filters.BlurFilter(displace);
+	blurFilter.blur = 0;
+	slimePireCanvas.stage.filters = [blurFilter];
+
+
+	let displaceFilterVue = new PIXI.filters.DisplacementFilter(displace);
+	displaceFilterVue.scale.set(0);
+	vueCanvas.stage.filters = [displaceFilterVue];
+
+
+	let blurFilterSk = new PIXI.filters.BlurFilter(displace);
+	blurFilterSk.blur = 0;
+	skCanvas.stage.filters = [blurFilterSk];
+	
+
+	let displaceFilterRx = new PIXI.filters.DisplacementFilter(displace);
+	displaceFilterRx.scale.set(0);
+	rxbarCanvas.stage.filters = [displaceFilterRx];
+	
+	let blurFilterZelp = new PIXI.filters.BlurFilter(displace);
+	blurFilterZelp.blur = 0;
+	zelpCanvas.stage.filters = [blurFilterZelp];
+
+	let displaceFilterNode = new PIXI.filters.DisplacementFilter(displace);
+	displaceFilterNode.scale.set(0);
+	hipsterCanvas.stage.filters = [displaceFilterNode];
+
+	let blurFilterDrum = new PIXI.filters.BlurFilter(displace);
+	blurFilterDrum.blur = 0;
+	drumCanvas.stage.filters = [blurFilterDrum];
 	
 	
 	
@@ -160,20 +189,20 @@ function onAssetsLoaded(loader, resources) {
 
 	});
 
-	vueCanvas.view.addEventListener("mouseover", function(){
-		TweenMax.fromTo(displaceFilter.scale, 1, {
-			x: 50, 
-			y: 50
-		}, 
-		{	x: 0, 
-			y: 0, 
-			ease: Elastic.easeOut,
-		});
-
-	});
 
 	slimePireCanvas.view.addEventListener("mouseover", function(){
-		TweenMax.fromTo(displaceFilter.scale, 1, {
+		TweenMax.fromTo(blurFilter, 2, {
+			blur: 40, 
+		}, 
+		{	blur: 0, 
+			ease: Elastic.easeOut,
+		});
+
+	});
+
+
+	vueCanvas.view.addEventListener("mouseover", function(){
+		TweenMax.fromTo(displaceFilterVue.scale, 1, {
 			x: 50, 
 			y: 50
 		}, 
@@ -184,8 +213,62 @@ function onAssetsLoaded(loader, resources) {
 
 	});
 
+	skCanvas.view.addEventListener("mouseover", function(){
+		TweenMax.fromTo(blurFilterSk, 2, {
+			blur: 40, 
+		}, 
+		{	blur: 0, 
+			ease: Elastic.easeOut,
+		});
 
-// }
+	});
+
+	rxbarCanvas.view.addEventListener("mouseover", function(){
+		TweenMax.fromTo(displaceFilterRx.scale, 1, {
+			x: 50, 
+			y: 50
+		}, 
+		{	x: 0, 
+			y: 0, 
+			ease: Elastic.easeOut,
+		});
+
+	});
+
+	zelpCanvas.view.addEventListener("mouseover", function(){
+		TweenMax.fromTo(blurFilterZelp, 2, {
+			blur: 40, 
+		}, 
+		{	blur: 0, 
+			ease: Elastic.easeOut,
+		});
+
+	});
+
+	hipsterCanvas.view.addEventListener("mouseover", function(){
+		TweenMax.fromTo(displaceFilterNode.scale, 1, {
+			x: 50, 
+			y: 50
+		}, 
+		{	x: 0, 
+			y: 0, 
+			ease: Elastic.easeOut,
+		});
+
+	});
+
+	drumCanvas.view.addEventListener("mouseover", function(){
+		TweenMax.fromTo(blurFilterDrum, 2, {
+			blur: 40, 
+		}, 
+		{	blur: 0, 
+			ease: Elastic.easeOut,
+		});
+
+	});
+
+
+}
 	
 
 
