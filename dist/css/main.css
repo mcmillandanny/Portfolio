@@ -191,7 +191,7 @@ h1 {
 	.porfolio-wrapper .slide-out-text3 {
 		position: absolute;
 		top: 28.5%;
-		left: 40%;
+		left: 60%;
 		max-width: 40%;
 		z-index: -1;
 		background-color: rgba(0, 0, 50, 0.2);
@@ -239,7 +239,7 @@ h1 {
 	.porfolio-wrapper .slide-out-text7 {
 		position: absolute;
 		top: 78.9%;
-		left: 20%;
+		left: 60%;
 		max-width: 40%;
 		z-index: -1;
 		background-color: rgba(0, 0, 50, 0.2);
