@@ -212,13 +212,16 @@ function imageFilter() {
 		});
 	});
 
-	drumCanvas.view.addEventListener("mouseover", function () {
-		TweenMax.fromTo(blurFilterDrum, 2, {
-			blur: 40
-		}, { blur: 0,
-			ease: Elastic.easeOut
-		});
-	});
+	// drumCanvas.view.addEventListener("mouseover", function(){
+	// 	TweenMax.fromTo(blurFilterDrum, 2, {
+	// 		blur: 40, 
+	// 	}, 
+	// 	{	blur: 0, 
+	// 		ease: Elastic.easeOut,
+	// 	});
+
+	// });
+
 }
 
 function setupScrollProgress() {
