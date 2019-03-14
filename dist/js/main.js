@@ -2,6 +2,8 @@
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+// mcmillandanny@gmail.com
+
 var app = new PIXI.Application({
 	view: document.getElementById("backgroundCanvas"),
 	width: 1280,
@@ -65,7 +67,7 @@ var drumCanvas = new PIXI.Application({
 	transparent: true
 });
 
-var manifest = [{ "key": "hanselProject", "url": "dist/img/hanselproject.jpg" }, { "key": "displacement", "url": "dist/img/displacement2.png" }, { "key": "vueProject", "url": "dist/img/IGDB.jpg" }, { "key": "slimePireProject", "url": "dist/img/slimepire.jpg" }, { "key": "skProject", "url": "dist/img/shakyknees.jpg" }, { "key": "rxbarProject", "url": "dist/img/rxbar.jpg" }, { "key": "zelpProject", "url": "dist/img/zelp.jpg" }, { "key": "nodeProject", "url": "dist/img/node.jpg" }];
+var manifest = [{ "key": "hanselProject", "url": "dist/img/hanselproject.jpg" }, { "key": "displacement", "url": "dist/img/displacement2.png" }, { "key": "vueProject", "url": "dist/img/IGDB.jpg" }, { "key": "slimePireProject", "url": "dist/img/slimepire.jpg" }, { "key": "skProject", "url": "dist/img/shakyknees.jpg" }, { "key": "rxbarProject", "url": "dist/img/rxbar.jpg" }, { "key": "zelpProject", "url": "dist/img/zelp.jpg" }, { "key": "nodeProject", "url": "dist/img/nodeProject.jpg" }];
 
 function loadAssets() {
 	app.loader.add(manifest);

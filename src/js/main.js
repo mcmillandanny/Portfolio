@@ -1,4 +1,5 @@
 
+// mcmillandanny@gmail.com
 
 let app = new PIXI.Application({
 	view: document.getElementById("backgroundCanvas"),
@@ -73,7 +74,7 @@ let manifest = [
 	{"key" : "skProject", "url" : "dist/img/shakyknees.jpg"},
 	{"key" : "rxbarProject", "url" : "dist/img/rxbar.jpg"},
 	{"key" : "zelpProject", "url" : "dist/img/zelp.jpg"},
-	{"key" : "nodeProject", "url" : "dist/img/node.jpg"},
+	{"key" : "nodeProject", "url" : "dist/img/nodeProject.jpg"},
 
 
 ];
