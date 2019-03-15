@@ -284,12 +284,12 @@ h1 {
 	background-color: rgba(0, 0, 50, 0.2);
 	position: relative;
 	height: 300px;
-	margin: 20px;
+	margin: 50px;
 }
 
 @media (min-width: 768px) {
 	.container .about-me-wrapper {
-		width: 60%;
+		width: 70%;
 		padding: 10px;
 		margin-left: auto;
 		display: block;
@@ -336,12 +336,12 @@ h1 {
 
 @media (min-width: 768px) {
 	.container .about-me-wrapper img {
-		width: 35%;
+		width: 25%;
 		display: inline-block;
 		vertical-align: middle;
 		position: absolute;
 		top: 25%;
-		left: -30%;
+		left: 5%;
 		margin-bottom: 20px;
 	}
 }
@@ -351,7 +351,7 @@ h1 {
 	padding: 10px;
 	background-color: rgba(0, 0, 50, 0.2);
 	position: relative;
-	height: 250px;
+	height: 300px;
 	margin-top: 120px;
 	width: 100%;
 	margin-bottom: 40px;
@@ -362,7 +362,8 @@ h1 {
 	.extra-work-wrapper {
 		width: 65%;
 		padding: 10px;
-		margin-left: 20px;
+		margin-left: 40px;
+		height: 340px;
 	}
 }
 
@@ -380,19 +381,11 @@ h1 {
 }
 
 .extra-work-wrapper .extra-wrapper1 {
-	position: absolute;
-	top: 40%;
-	left: 10%;
-	width: 31%;
+	display: inline-block;
+	width: 45%;
 	padding: 5px;
 	pointer-events: auto;
-}
-
-@media (min-width: 768px) {
-	.extra-work-wrapper .extra-wrapper1 {
-		left: 30%;
-		top: 40%;
-	}
+	margin: 10px;
 }
 
 .extra-work-wrapper .extra-wrapper1 p {
@@ -412,18 +405,11 @@ h1 {
 }
 
 .extra-work-wrapper .extra-wrapper2 {
-	width: 31%;
+	width: 45%;
 	padding: 5px;
-	position: absolute;
-	top: 40%;
-	left: 60%;
 	pointer-events: auto;
-}
-
-@media (min-width: 768px) {
-	.extra-work-wrapper .extra-wrapper2 {
-		left: 80%;
-	}
+	display: inline-block;
+	margin: 5px;
 }
 
 .extra-work-wrapper .extra-wrapper2 p {
@@ -446,7 +432,7 @@ h1 {
 	width: 50%;
 	margin-left: auto;
 	margin-right: auto;
-	margin-top: 150px;
+	margin-top: 80px;
 	margin-bottom: 120px;
 	padding: 10px;
 	pointer-events: auto;

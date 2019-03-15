@@ -67,7 +67,7 @@ var drumCanvas = new PIXI.Application({
 	transparent: true
 });
 
-var manifest = [{ "key": "hanselProject", "url": "dist/img/hanselproject.jpg" }, { "key": "displacement", "url": "dist/img/displacement2.png" }, { "key": "vueProject", "url": "dist/img/IGDB.jpg" }, { "key": "slimePireProject", "url": "dist/img/slimepire.jpg" }, { "key": "skProject", "url": "dist/img/shakyknees.jpg" }, { "key": "rxbarProject", "url": "dist/img/rxbar.jpg" }, { "key": "zelpProject", "url": "dist/img/zelp.jpg" }, { "key": "nodeProject", "url": "dist/img/nodeProject.jpg" }];
+var manifest = [{ "key": "hanselProject", "url": "dist/img/hanselproject.jpg" }, { "key": "displacement", "url": "dist/img/displacement2.png" }, { "key": "vueProject", "url": "dist/img/IGDB.jpg" }, { "key": "slimePireProject", "url": "dist/img/slimepire.jpg" }, { "key": "skProject", "url": "dist/img/shakyknees.jpg" }, { "key": "rxbarProject", "url": "dist/img/rxbar.jpg" }, { "key": "zelpProject", "url": "dist/img/zelp.jpg" }, { "key": "nodeProject", "url": "dist/img/nodeProject.jpg" }, { "key": "drumProject", "url": "dist/img/drum.jpg" }];
 
 function loadAssets() {
 	app.loader.add(manifest);
@@ -80,8 +80,6 @@ function onAssetsLoaded(loader, resources) {
 	godRayFilter();
 
 	imageFilter();
-
-	setupScrollProgress();
 
 	setupTextDecompose();
 
@@ -113,7 +111,7 @@ function imageFilter() {
 	var nodeProjectImg = new PIXI.Sprite(app.loader.resources.nodeProject.texture);
 	hipsterCanvas.stage.addChild(nodeProjectImg);
 
-	var drumProjectImg = new PIXI.Sprite(app.loader.resources.nodeProject.texture);
+	var drumProjectImg = new PIXI.Sprite(app.loader.resources.drumProject.texture);
 	drumCanvas.stage.addChild(drumProjectImg);
 
 	var displace = new PIXI.Sprite(app.loader.resources.displacement.texture);
@@ -214,43 +212,13 @@ function imageFilter() {
 		});
 	});
 
-	// drumCanvas.view.addEventListener("mouseover", function(){
-	// 	TweenMax.fromTo(blurFilterDrum, 2, {
-	// 		blur: 40, 
-	// 	}, 
-	// 	{	blur: 0, 
-	// 		ease: Elastic.easeOut,
-	// 	});
-
-	// });
-
-}
-
-function setupScrollProgress() {
-	// draw range circles
-	var start = new PIXI.Graphics();
-	start.beginFill(0xffffff);
-	start.drawCircle(0, 0, 4);
-	start.x = 1250;
-	start.y = 100;
-	app.stage.addChild(start);
-
-	var end = new PIXI.Graphics();
-	end.beginFill(0xffffff);
-	end.drawCircle(0, 0, 4);
-	end.x = 1250;
-	end.y = 500;
-	app.stage.addChild(end);
-
-	// draw progress bar
-	app.scrollProgress = new PIXI.Graphics();
-	app.scrollProgress.beginFill(0xe16d3b);
-	app.scrollProgress.drawRect(-2, 0, 4, 400);
-
-	app.scrollProgress.x = 1250;
-	app.scrollProgress.y = 100;
-
-	app.stage.addChild(app.scrollProgress);
+	drumCanvas.view.addEventListener("mouseover", function () {
+		TweenMax.fromTo(blurFilterDrum, 2, {
+			blur: 40
+		}, { blur: 0,
+			ease: Elastic.easeOut
+		});
+	});
 }
 
 var godRay = new PIXI.filters.GodrayFilter();
@@ -325,22 +293,17 @@ function setupTextDecompose() {
 		y: -0
 	};
 
-	TweenMax.fromTo(app.email.pos, 1.1, {
-		x: 470,
-		y: 1000
+	TweenMax.fromTo(app.tagLine, 10, {
+		opacity: 0
 	}, {
-		x: app.email.pos.x,
-		y: app.email.pos.y,
-		ease: Bounce.easeOut
+		opacity: 1
 	});
 
-	TweenMax.fromTo(app.tagLine.pos, 2, {
-		x: -1000,
-		y: 300
+	TweenMax.fromTo(app.email, 3, {
+		opacity: 0
 	}, {
-		x: app.tagLine.pos.x,
-		y: app.tagLine.pos.y,
-		ease: Elastic.easeOut.config(1, 0.3)
+		opacity: 1,
+		ease: Bounce.easeOut
 	});
 
 	app.tagLine.x = app.tagLine.pos.x;
@@ -412,7 +375,7 @@ function update(e) {
 
 	var html = document.scrollingElement;
 	var percentScrolled = html.scrollTop / (html.scrollHeight - html.offsetHeight);
-	app.scrollProgress.scale.set(1, percentScrolled);
+
 	app.letters.forEach(function (letter) {
 		if (letter.tweening === true) {
 			// tween max has control

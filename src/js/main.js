@@ -75,6 +75,7 @@ let manifest = [
 	{"key" : "rxbarProject", "url" : "dist/img/rxbar.jpg"},
 	{"key" : "zelpProject", "url" : "dist/img/zelp.jpg"},
 	{"key" : "nodeProject", "url" : "dist/img/nodeProject.jpg"},
+	{"key" : "drumProject", "url" : "dist/img/drum.jpg"}
 
 
 ];
@@ -93,8 +94,6 @@ function onAssetsLoaded(loader, resources) {
 	godRayFilter();
 
 	imageFilter();
-
-	setupScrollProgress();
 
 	setupTextDecompose();
 
@@ -131,7 +130,7 @@ function imageFilter() {
 	let nodeProjectImg = new PIXI.Sprite(app.loader.resources.nodeProject.texture);
 	hipsterCanvas.stage.addChild(nodeProjectImg);
 
-	let drumProjectImg = new PIXI.Sprite(app.loader.resources.nodeProject.texture);
+	let drumProjectImg = new PIXI.Sprite(app.loader.resources.drumProject.texture);
 	drumCanvas.stage.addChild(drumProjectImg);
 
 
@@ -258,47 +257,21 @@ function imageFilter() {
 
 	});
 
-	// drumCanvas.view.addEventListener("mouseover", function(){
-	// 	TweenMax.fromTo(blurFilterDrum, 2, {
-	// 		blur: 40, 
-	// 	}, 
-	// 	{	blur: 0, 
-	// 		ease: Elastic.easeOut,
-	// 	});
+	drumCanvas.view.addEventListener("mouseover", function(){
+		TweenMax.fromTo(blurFilterDrum, 2, {
+			blur: 40, 
+		}, 
+		{	blur: 0, 
+			ease: Elastic.easeOut,
+		});
 
-	// });
+	});
 
 
 }
 	
 
 
-function setupScrollProgress() {
-	// draw range circles
-	let start = new PIXI.Graphics();
-	start.beginFill(0xffffff);
-	start.drawCircle(0, 0, 4);
-	start.x = 1250;
-	start.y = 100;
-	app.stage.addChild(start);
-
-	let end = new PIXI.Graphics();
-	end.beginFill(0xffffff);
-	end.drawCircle(0, 0, 4);
-	end.x = 1250;
-	end.y = 500;
-	app.stage.addChild(end);
-
-	// draw progress bar
-	app.scrollProgress = new PIXI.Graphics();
-	app.scrollProgress.beginFill(0xe16d3b);
-	app.scrollProgress.drawRect(-2, 0, 4, 400);
-
-	app.scrollProgress.x = 1250;
-	app.scrollProgress.y = 100;
-
-	app.stage.addChild(app.scrollProgress);
-}
 
 let godRay = new PIXI.filters.GodrayFilter()
 let bgImage = new PIXI.Graphics();
@@ -376,25 +349,25 @@ function setupTextDecompose() {
 		y : -0
 	}
 
-	TweenMax.fromTo(app.email.pos, 1.1, {
-		x: 470,
-		y: 1000,
+
+
+	TweenMax.fromTo(app.tagLine, 10, {
+		opacity: 0,
 	},
 	{
-		x: app.email.pos.x, 
-		y: app.email.pos.y,
+		opacity: 1,
+	})
+	
+
+	TweenMax.fromTo(app.email, 3, {
+		opacity: 0,
+	},
+	{
+		opacity: 1,
 		ease: Bounce.easeOut,
 	})
 
-	TweenMax.fromTo(app.tagLine.pos, 2, {
-		x: -1000,
-		y: 300,
-	},
-	{
-		x: app.tagLine.pos.x, 
-		y: app.tagLine.pos.y,
-		ease: Elastic.easeOut.config(1, 0.3)
-	})
+	
 
 	
 
@@ -495,7 +468,7 @@ function update(e) {
 
 	let html = document.scrollingElement;
 	let percentScrolled = html.scrollTop / (html.scrollHeight - html.offsetHeight);
-	app.scrollProgress.scale.set(1, percentScrolled);
+
 	app.letters.forEach(function(letter) {
 		if (letter.tweening === true) {
 			// tween max has control
