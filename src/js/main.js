@@ -139,51 +139,51 @@ function imageFilter() {
 	
 	
 	
-	let displaceFilter = new PIXI.filters.DisplacementFilter(displace);
-	displaceFilter.scale.set(0);
-	hanselCanvas.stage.filters = [displaceFilter];
+	// let displaceFilter = new PIXI.filters.DisplacementFilter(displace);
+	// displaceFilter.scale.set(0);
+	// hanselCanvas.stage.filters = [displaceFilter];
 	
 	let blurFilter = new PIXI.filters.BlurFilter(displace);
 	blurFilter.blur = 0;
 	slimePireCanvas.stage.filters = [blurFilter];
 
+	let blurFilterHansel = new PIXI.filters.BlurFilter(displace);
+	blurFilterHansel.blur = 0;
+	hanselCanvas.stage.filters = [blurFilterHansel];
 
-	let displaceFilterVue = new PIXI.filters.DisplacementFilter(displace);
-	displaceFilterVue.scale.set(0);
-	vueCanvas.stage.filters = [displaceFilterVue];
 
+	let blurFilterVue = new PIXI.filters.BlurFilter(displace);
+	blurFilterVue.blur = 0;
+	vueCanvas.stage.filters = [blurFilterVue];
 
 	let blurFilterSk = new PIXI.filters.BlurFilter(displace);
 	blurFilterSk.blur = 0;
 	skCanvas.stage.filters = [blurFilterSk];
 	
-
-	let displaceFilterRx = new PIXI.filters.DisplacementFilter(displace);
-	displaceFilterRx.scale.set(0);
-	rxbarCanvas.stage.filters = [displaceFilterRx];
+	let blurFilterRx = new PIXI.filters.BlurFilter(displace);
+	blurFilterRx.blur = 0;
+	rxbarCanvas.stage.filters = [blurFilterRx];
 	
 	let blurFilterZelp = new PIXI.filters.BlurFilter(displace);
 	blurFilterZelp.blur = 0;
 	zelpCanvas.stage.filters = [blurFilterZelp];
 
-	let displaceFilterNode = new PIXI.filters.DisplacementFilter(displace);
-	displaceFilterNode.scale.set(0);
-	hipsterCanvas.stage.filters = [displaceFilterNode];
+	let blurFilterNode = new PIXI.filters.BlurFilter(displace);
+	blurFilterNode.blur = 0;
+	hipsterCanvas.stage.filters = [blurFilterNode];
 
 	let blurFilterDrum = new PIXI.filters.BlurFilter(displace);
 	blurFilterDrum.blur = 0;
 	drumCanvas.stage.filters = [blurFilterDrum];
 	
-	
-	
+
 
 	hanselCanvas.view.addEventListener("mouseover", function(){
-		TweenMax.fromTo(displaceFilter.scale, 1, {
-			x: 50, 
-			y: 50
+		TweenMax.fromTo(blurFilterHansel, 1, {
+			blur: 40,
 		}, 
-		{	x: 0, 
-			y: 0, 
+		{	
+			blur: 0,
 			ease: Elastic.easeOut,
 		});
 
@@ -202,12 +202,11 @@ function imageFilter() {
 
 
 	vueCanvas.view.addEventListener("mouseover", function(){
-		TweenMax.fromTo(displaceFilterVue.scale, 1, {
-			x: 50, 
-			y: 50
+		TweenMax.fromTo(blurFilterVue, 1, {
+			blur: 40,
 		}, 
-		{	x: 0, 
-			y: 0, 
+		{	
+			blur: 0,
 			ease: Elastic.easeOut,
 		});
 
@@ -224,12 +223,11 @@ function imageFilter() {
 	});
 
 	rxbarCanvas.view.addEventListener("mouseover", function(){
-		TweenMax.fromTo(displaceFilterRx.scale, 1, {
-			x: 50, 
-			y: 50
+		TweenMax.fromTo(blurFilterRx, 1, {
+			blur: 40,
 		}, 
-		{	x: 0, 
-			y: 0, 
+		{	
+			blur: 0,
 			ease: Elastic.easeOut,
 		});
 
@@ -246,12 +244,11 @@ function imageFilter() {
 	});
 
 	hipsterCanvas.view.addEventListener("mouseover", function(){
-		TweenMax.fromTo(displaceFilterNode.scale, 1, {
-			x: 50, 
-			y: 50
+		TweenMax.fromTo(blurFilterNode, 1, {
+			blur: 40,
 		}, 
-		{	x: 0, 
-			y: 0, 
+		{	
+			blur: 0,
 			ease: Elastic.easeOut,
 		});
 
@@ -312,7 +309,7 @@ function setupTextDecompose() {
 		fontFamily: "\"Lucida Console\", Monaco, monospace",
 		fontSize: 50,
 		fontVariant: "small-caps",
-		fontWeight: "bold"
+		fontWeight: "bold",
 	});
 
 	const styleEmail = new PIXI.TextStyle({
@@ -344,27 +341,25 @@ function setupTextDecompose() {
 		y : 300
 	}
 
+	app.tagLine.style.opacity = "0"
+
 	app.tagLine.endPos = {
 		x : -5000,
 		y : -0
 	}
 
+	console.log(app.tagLine);
 
 
-	TweenMax.fromTo(app.tagLine, 10, {
-		opacity: 0,
-	},
-	{
-		opacity: 1,
+
+	let fadeTextIn = new TimelineMax({delay: 1});
+
+	fadeTextIn.from(app.tagLine, 1, {
+		alpha: 0
 	})
-	
 
-	TweenMax.fromTo(app.email, 3, {
-		opacity: 0,
-	},
-	{
-		opacity: 1,
-		ease: Bounce.easeOut,
+	fadeTextIn.from(app.email, 1, {
+		alpha: 0
 	})
 
 	
@@ -478,6 +473,7 @@ function update(e) {
 			letter.velocity.y += (Math.random() * 2) - 1;
 			letter.x += letter.velocity.x;
 			letter.y += letter.velocity.y;
+
 
 				if (letter.y > 720) {
 					letter.velocity.y *= -0.8;

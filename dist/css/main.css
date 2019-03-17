@@ -87,20 +87,46 @@ h1 {
 
 .content .nav-wrapper {
 	background-color: rgba(0, 0, 50, 0.2);
-	width: 15%;
+	width: 14%;
 	z-index: 22;
 	position: sticky;
 	left: 120%;
-	top: 40%;
+	top: 20%;
 	pointer-events: auto;
+	text-align: left;
+}
+
+@media (min-width: 320px) {
+	.content .nav-wrapper {
+		display: none;
+	}
+}
+
+@media (min-width: 768px) {
+	.content .nav-wrapper {
+		display: block;
+	}
 }
 
 .content .nav-wrapper a {
-	padding: 20px;
-	color: #eadbb0;
-	text-align: center;
 	text-decoration: none;
+	outline: none;
+}
+
+.content .nav-wrapper h2 {
 	margin: 10px;
+	font-size: 20px;
+	color: #eadbb0;
+	padding: 2px;
+}
+
+.content .nav-wrapper h2:hover {
+	color: black;
+	font-size: 19px;
+}
+
+.content .nav-wrapper h2.current {
+	background: #c3771c;
 }
 
 .content h1 {

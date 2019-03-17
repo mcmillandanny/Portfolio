@@ -11,17 +11,18 @@
 	  <link href="https://fonts.googleapis.com/css?family=Roboto:700" rel="stylesheet">
    </head>
    <body>
-      <div class="canvasWrapper" >
+       <div id=top></div>
+      <div class="canvasWrapper">
          <canvas  id="backgroundCanvas"></canvas>
       </div>
       <div class="content">
           <div class="nav-wrapper">
-                <a href="#top">Top</a>
-                <a href="#work">Work</a>
-                <a href="#contact">Contact</a>
+                <a href="#top"><h2>Top</h2></a>
+                <a href="#work"><h2>Work</h2></a>
+                <a href="#contact"><h2>Contact</h2></a>
           </div>
-         <div  class="porfolio-wrapper">
-            <div id="work" class="p1">
+         <div id="work"  class="porfolio-wrapper">
+            <div class="p1">
                <h1>Hansel and Gretel</h1>
                <a href="http://mcmillandanny.tech/HanselProject/"><canvas id="project1" width="1280" height="720"></canvas></a>
                 <section class="slide-out-text">
@@ -108,6 +109,7 @@
         </div>
       </div>
 
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TimelineMax.min.js"></script>
       <script src="dist/js/noframework.waypoints.min.js"></script>
 	  <script src="dist/js/pixi.js"></script>
 	  <script src="https://cdn.jsdelivr.net/npm/pixi-filters@2.6.1/dist/pixi-filters.js"></script>

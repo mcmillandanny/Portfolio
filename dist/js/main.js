@@ -116,44 +116,47 @@ function imageFilter() {
 
 	var displace = new PIXI.Sprite(app.loader.resources.displacement.texture);
 
-	var displaceFilter = new PIXI.filters.DisplacementFilter(displace);
-	displaceFilter.scale.set(0);
-	hanselCanvas.stage.filters = [displaceFilter];
+	// let displaceFilter = new PIXI.filters.DisplacementFilter(displace);
+	// displaceFilter.scale.set(0);
+	// hanselCanvas.stage.filters = [displaceFilter];
 
 	var blurFilter = new PIXI.filters.BlurFilter(displace);
 	blurFilter.blur = 0;
 	slimePireCanvas.stage.filters = [blurFilter];
 
-	var displaceFilterVue = new PIXI.filters.DisplacementFilter(displace);
-	displaceFilterVue.scale.set(0);
-	vueCanvas.stage.filters = [displaceFilterVue];
+	var blurFilterHansel = new PIXI.filters.BlurFilter(displace);
+	blurFilterHansel.blur = 0;
+	hanselCanvas.stage.filters = [blurFilterHansel];
+
+	var blurFilterVue = new PIXI.filters.BlurFilter(displace);
+	blurFilterVue.blur = 0;
+	vueCanvas.stage.filters = [blurFilterVue];
 
 	var blurFilterSk = new PIXI.filters.BlurFilter(displace);
 	blurFilterSk.blur = 0;
 	skCanvas.stage.filters = [blurFilterSk];
 
-	var displaceFilterRx = new PIXI.filters.DisplacementFilter(displace);
-	displaceFilterRx.scale.set(0);
-	rxbarCanvas.stage.filters = [displaceFilterRx];
+	var blurFilterRx = new PIXI.filters.BlurFilter(displace);
+	blurFilterRx.blur = 0;
+	rxbarCanvas.stage.filters = [blurFilterRx];
 
 	var blurFilterZelp = new PIXI.filters.BlurFilter(displace);
 	blurFilterZelp.blur = 0;
 	zelpCanvas.stage.filters = [blurFilterZelp];
 
-	var displaceFilterNode = new PIXI.filters.DisplacementFilter(displace);
-	displaceFilterNode.scale.set(0);
-	hipsterCanvas.stage.filters = [displaceFilterNode];
+	var blurFilterNode = new PIXI.filters.BlurFilter(displace);
+	blurFilterNode.blur = 0;
+	hipsterCanvas.stage.filters = [blurFilterNode];
 
 	var blurFilterDrum = new PIXI.filters.BlurFilter(displace);
 	blurFilterDrum.blur = 0;
 	drumCanvas.stage.filters = [blurFilterDrum];
 
 	hanselCanvas.view.addEventListener("mouseover", function () {
-		TweenMax.fromTo(displaceFilter.scale, 1, {
-			x: 50,
-			y: 50
-		}, { x: 0,
-			y: 0,
+		TweenMax.fromTo(blurFilterHansel, 1, {
+			blur: 40
+		}, {
+			blur: 0,
 			ease: Elastic.easeOut
 		});
 	});
@@ -167,11 +170,10 @@ function imageFilter() {
 	});
 
 	vueCanvas.view.addEventListener("mouseover", function () {
-		TweenMax.fromTo(displaceFilterVue.scale, 1, {
-			x: 50,
-			y: 50
-		}, { x: 0,
-			y: 0,
+		TweenMax.fromTo(blurFilterVue, 1, {
+			blur: 40
+		}, {
+			blur: 0,
 			ease: Elastic.easeOut
 		});
 	});
@@ -185,11 +187,10 @@ function imageFilter() {
 	});
 
 	rxbarCanvas.view.addEventListener("mouseover", function () {
-		TweenMax.fromTo(displaceFilterRx.scale, 1, {
-			x: 50,
-			y: 50
-		}, { x: 0,
-			y: 0,
+		TweenMax.fromTo(blurFilterRx, 1, {
+			blur: 40
+		}, {
+			blur: 0,
 			ease: Elastic.easeOut
 		});
 	});
@@ -203,11 +204,10 @@ function imageFilter() {
 	});
 
 	hipsterCanvas.view.addEventListener("mouseover", function () {
-		TweenMax.fromTo(displaceFilterNode.scale, 1, {
-			x: 50,
-			y: 50
-		}, { x: 0,
-			y: 0,
+		TweenMax.fromTo(blurFilterNode, 1, {
+			blur: 40
+		}, {
+			blur: 0,
 			ease: Elastic.easeOut
 		});
 	});
@@ -288,22 +288,23 @@ function setupTextDecompose() {
 		y: 300
 	};
 
+	app.tagLine.style.opacity = "0";
+
 	app.tagLine.endPos = {
 		x: -5000,
 		y: -0
 	};
 
-	TweenMax.fromTo(app.tagLine, 10, {
-		opacity: 0
-	}, {
-		opacity: 1
+	console.log(app.tagLine);
+
+	var fadeTextIn = new TimelineMax({ delay: 1 });
+
+	fadeTextIn.from(app.tagLine, 1, {
+		alpha: 0
 	});
 
-	TweenMax.fromTo(app.email, 3, {
-		opacity: 0
-	}, {
-		opacity: 1,
-		ease: Bounce.easeOut
+	fadeTextIn.from(app.email, 1, {
+		alpha: 0
 	});
 
 	app.tagLine.x = app.tagLine.pos.x;
