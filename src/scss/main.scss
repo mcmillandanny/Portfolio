@@ -56,6 +56,24 @@ h1 {
 	padding: 10px;
 	padding-top: 65%;
 
+
+	.nav-wrapper {
+		background-color:rgba(0,0,50, .2);
+		width: 15%;
+		z-index: 22;
+		position: sticky;
+		left: 120%;
+		top: 40%;
+		pointer-events: auto;
+		a {
+			padding: 20px;
+			color: #eadbb0;
+			text-align: center;
+			text-decoration: none;
+			margin: 10px;
+		}
+	}
+
 	
 	
 
